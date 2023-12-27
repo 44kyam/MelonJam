@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://blg0bay2ju517"]
+
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_u83sf"]
+[ext_resource type="PackedScene" uid="uid://b3axilodqo3by" path="res://Scenes/Player/player.tscn" id="2_7o8sm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hkoek"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_fi1as"]
+font_size = 40
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_u83sf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, 2)
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -1033.0
+offset_top = -576.0
+offset_right = -712.0
+offset_bottom = -507.0
+text = "This is a label"
+label_settings = SubResource("LabelSettings_hkoek")
+
+[node name="Player" parent="." instance=ExtResource("2_7o8sm")]
+
+[node name="Label" type="Label" parent="Player"]
+offset_left = -59.0
+offset_top = -115.0
+offset_right = 61.0
+offset_bottom = -60.0
+text = "Player"
+label_settings = SubResource("LabelSettings_fi1as")
