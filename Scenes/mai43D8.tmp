@@ -13,7 +13,6 @@ font_size = 50
 script = ExtResource("1_u83sf")
 
 [node name="Player" parent="." instance=ExtResource("2_7o8sm")]
-input_pickable = true
 
 [node name="Label" type="Label" parent="Player"]
 offset_left = -59.0
@@ -22,6 +21,14 @@ offset_right = 61.0
 offset_bottom = -60.0
 text = "Player"
 label_settings = SubResource("LabelSettings_fi1as")
+
+[node name="Control" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -63.0
+offset_top = -64.0
+offset_right = 65.0
+offset_bottom = 65.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-2, 2)
@@ -35,3 +42,6 @@ offset_right = -712.0
 offset_bottom = -507.0
 text = "This is a label"
 label_settings = SubResource("LabelSettings_hkoek")
+
+[connection signal="mouse_entered" from="Player" to="." method="_on_player_mouse_entered"]
+[connection signal="mouse_entered" from="Player/Control" to="." method="_on_control_mouse_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ykdwqrbe6c03"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/clickables.gd" id="1_vrxym"]
+
+[node name="Clickables" type="Area2D"]
+script = ExtResource("1_vrxym")

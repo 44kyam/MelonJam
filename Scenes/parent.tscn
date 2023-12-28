@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://gacxqlgbd4y1"]
+
+[ext_resource type="FontFile" uid="uid://dprhbmsy2ud0b" path="res://Assets/Font/Itim-Regular.ttf" id="1_1mur6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vhhj7"]
+font = ExtResource("1_1mur6")
+font_size = 50
+
+[node name="Parent" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, 2)
+zoom = Vector2(0.66, 0.66)
+position_smoothing_enabled = true
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -932.0
+offset_top = -514.0
+offset_right = -611.0
+offset_bottom = -445.0
+text = "This is a label"
+label_settings = SubResource("LabelSettings_vhhj7")
