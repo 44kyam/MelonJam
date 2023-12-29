@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bilre1384vbj8"]
+
+[ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_8o6wh"]
+[ext_resource type="Script" path="res://Scenes/middleScene.gd" id="2_4soy4"]
+[ext_resource type="Texture2D" uid="uid://bek1yvvb6rbga" path="res://Assets/Placeholder/mainScreenBG.png" id="3_c5ohy"]
+[ext_resource type="PackedScene" uid="uid://dn7r5vvagf7vt" path="res://Scenes/Objects/dialogue_box.tscn" id="4_ppsmi"]
+
+[node name="MiddleScene" instance=ExtResource("1_8o6wh")]
+script = ExtResource("2_4soy4")
+
+[node name="Background" type="Sprite2D" parent="." index="0"]
+position = Vector2(-1, -3)
+scale = Vector2(2.29241, 2.29241)
+texture = ExtResource("3_c5ohy")
+
+[node name="Camera2D" parent="." index="1"]
+position_smoothing_enabled = false
+
+[node name="Label" parent="Camera2D" index="0"]
+offset_left = -930.0
+offset_top = -525.0
+offset_right = -609.0
+offset_bottom = -456.0
+
+[node name="ColorRect" type="ColorRect" parent="." index="3"]
+offset_left = 645.0
+offset_top = -513.0
+offset_right = 908.0
+offset_bottom = -356.0
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueBox2" parent="." index="4" instance=ExtResource("4_ppsmi")]
+visible = false
+position = Vector2(26, 163)
+
+[node name="DialogueBox" parent="." index="5" instance=ExtResource("4_ppsmi")]
+visible = false
+position = Vector2(19, -213)
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

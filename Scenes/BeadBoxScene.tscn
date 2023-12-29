@@ -1,0 +1,139 @@
+[gd_scene load_steps=18 format=3 uid="uid://0q3mulwalu7b"]
+
+[ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_o2qp4"]
+[ext_resource type="Script" path="res://Scenes/BeadBoxScene.gd" id="2_4q65q"]
+[ext_resource type="Texture2D" uid="uid://c03juac5o16re" path="res://Assets/charm_UI_clean_render_drawer_carpet.png" id="3_0qsxg"]
+[ext_resource type="PackedScene" uid="uid://cdgpy3qejghki" path="res://Scenes/Objects/ValidateButton.tscn" id="3_tr36s"]
+[ext_resource type="PackedScene" uid="uid://wujyiqjv4vih" path="res://Scenes/Objects/reset_button.tscn" id="4_5owgq"]
+[ext_resource type="Texture2D" uid="uid://cevq1lb5vla0o" path="res://Assets/charm_UI_clean_render_drawer.png" id="4_ywe62"]
+[ext_resource type="PackedScene" uid="uid://p782yeh17sal" path="res://Scenes/Objects/book_button.tscn" id="5_1wq8s"]
+[ext_resource type="PackedScene" uid="uid://bbcl6n1s6o18v" path="res://Scenes/Objects/exit_button.tscn" id="6_1byih"]
+[ext_resource type="Script" path="res://Scenes/Area.gd" id="8_la5qe"]
+[ext_resource type="PackedScene" uid="uid://devi4blg2suhp" path="res://Scenes/Objects/beads/bead_a.tscn" id="8_qyoom"]
+[ext_resource type="PackedScene" uid="uid://cmbuhovve0g8j" path="res://Scenes/Objects/beads/bead_b.tscn" id="9_n04um"]
+[ext_resource type="PackedScene" uid="uid://bb2aejqr2b8wu" path="res://Scenes/Objects/beads/bead_c.tscn" id="10_fuk3s"]
+[ext_resource type="PackedScene" uid="uid://bbjyk1kfp54uw" path="res://Scenes/Objects/beads/bead_e.tscn" id="11_j575j"]
+[ext_resource type="PackedScene" uid="uid://8xrvca7otc3s" path="res://Scenes/Objects/beads/bead_d.tscn" id="12_wvyus"]
+[ext_resource type="PackedScene" uid="uid://cix4vsp4exvn1" path="res://Scenes/Objects/beads/bead_f.tscn" id="16_ah53j"]
+[ext_resource type="PackedScene" uid="uid://2xt58q4hkenb" path="res://Scenes/Objects/drawer_handle.tscn" id="17_bammy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q0vm4"]
+radius = 88.0057
+
+[node name="BeadBoxScene" instance=ExtResource("1_o2qp4")]
+script = ExtResource("2_4q65q")
+
+[node name="BackgroundCarpet" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_0qsxg")
+
+[node name="Background" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("4_ywe62")
+
+[node name="BeadHolder" type="Sprite2D" parent="." index="2"]
+region_enabled = true
+
+[node name="Camera2D" parent="." index="3"]
+offset = Vector2(20, 0)
+
+[node name="Label" parent="Camera2D" index="0"]
+visible = false
+
+[node name="UI" parent="." index="4"]
+position = Vector2(10, 0)
+
+[node name="ValidateButton" parent="UI" index="0" instance=ExtResource("3_tr36s")]
+position = Vector2(878, -224)
+
+[node name="ResetButton" parent="UI" index="1" instance=ExtResource("4_5owgq")]
+position = Vector2(879, -70)
+
+[node name="BookButton" parent="UI" index="2" instance=ExtResource("5_1wq8s")]
+position = Vector2(879, 83)
+
+[node name="ExitButton" parent="UI" index="3" instance=ExtResource("6_1byih")]
+position = Vector2(880, 229)
+
+[node name="BeadSnapPos" type="Node2D" parent="." index="5"]
+metadata/_edit_lock_ = true
+
+[node name="Area1" type="Area2D" parent="BeadSnapPos" index="0"]
+position = Vector2(-190, 92)
+script = ExtResource("8_la5qe")
+idx = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeadSnapPos/Area1" index="0"]
+shape = SubResource("CircleShape2D_q0vm4")
+
+[node name="Area2" type="Area2D" parent="BeadSnapPos" index="1"]
+position = Vector2(-55, 242)
+script = ExtResource("8_la5qe")
+idx = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeadSnapPos/Area2" index="0"]
+shape = SubResource("CircleShape2D_q0vm4")
+
+[node name="Area3" type="Area2D" parent="BeadSnapPos" index="2"]
+position = Vector2(150, 280)
+script = ExtResource("8_la5qe")
+idx = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeadSnapPos/Area3" index="0"]
+shape = SubResource("CircleShape2D_q0vm4")
+
+[node name="Area4" type="Area2D" parent="BeadSnapPos" index="3"]
+position = Vector2(357, 241)
+script = ExtResource("8_la5qe")
+idx = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeadSnapPos/Area4" index="0"]
+shape = SubResource("CircleShape2D_q0vm4")
+
+[node name="Area5" type="Area2D" parent="BeadSnapPos" index="4"]
+position = Vector2(492, 92)
+script = ExtResource("8_la5qe")
+idx = 5
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeadSnapPos/Area5" index="0"]
+shape = SubResource("CircleShape2D_q0vm4")
+
+[node name="BeadBoxRoot" type="Node2D" parent="." index="6"]
+metadata/_edit_lock_ = true
+
+[node name="BeadA" parent="BeadBoxRoot" index="0" instance=ExtResource("8_qyoom")]
+position = Vector2(-792, -430)
+letter = "a"
+
+[node name="BeadB" parent="BeadBoxRoot" index="1" instance=ExtResource("9_n04um")]
+position = Vector2(-643, -429)
+letter = "b"
+
+[node name="BeadC" parent="BeadBoxRoot" index="2" instance=ExtResource("10_fuk3s")]
+position = Vector2(-791, -284)
+letter = "c"
+
+[node name="BeadD" parent="BeadBoxRoot" index="3" instance=ExtResource("12_wvyus")]
+position = Vector2(-643, -288)
+letter = "d"
+
+[node name="BeadE" parent="BeadBoxRoot" index="4" instance=ExtResource("11_j575j")]
+position = Vector2(-788, -141)
+letter = "e"
+
+[node name="BeadF" parent="BeadBoxRoot" index="5" instance=ExtResource("16_ah53j")]
+position = Vector2(-639, -141)
+letter = "f"
+
+[node name="BeadSnap" type="Node2D" parent="." index="7"]
+
+[node name="DrawerHandle" parent="." index="8" instance=ExtResource("17_bammy")]
+position = Vector2(-924, -34)
+
+[connection signal="input_event" from="UI/ValidateButton" to="." method="_on_validate_button_input_event"]
+[connection signal="input_event" from="UI/ResetButton" to="." method="_on_reset_button_input_event"]
+[connection signal="input_event" from="UI/BookButton" to="." method="_on_book_button_input_event"]
+[connection signal="input_event" from="UI/ExitButton" to="." method="_on_exit_button_input_event"]

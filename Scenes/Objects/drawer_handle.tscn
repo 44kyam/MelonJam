@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://2xt58q4hkenb"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_7jnml"]
+[ext_resource type="Texture2D" uid="uid://o2hppg2oig5o" path="res://Assets/charm_UI_drawer_hover.png" id="2_jnlvp"]
+
+[node name="DrawerHandle" instance=ExtResource("1_7jnml")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(23, -307, 23, -185, 11, -148, 5, -112, 6, 7, 6, 118, 11, 151, 24, 189, 24, 306, 6, 308, 0, 301, -5, 268, -4, 234, 3, 213, -12, 179, -20, 128, -24, -21, -20, -128, -11, -182, 4, -212, 3, -216, -1, -220, -5, -228, -6, -238, -3, -296, 1, -303, 8, -308)
+
+[node name="Img" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_jnlvp")
+region_enabled = true
+region_rect = Rect2(210, 56, 47, 614)
+
+[node name="ImgHover" type="Sprite2D" parent="." index="2"]
+visible = false
+texture = ExtResource("2_jnlvp")
+region_enabled = true
+region_rect = Rect2(48, 47, 56, 632)

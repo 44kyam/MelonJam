@@ -20,3 +20,5 @@ offset_right = -611.0
 offset_bottom = -445.0
 text = "This is a label"
 label_settings = SubResource("LabelSettings_vhhj7")
+
+[node name="UI" type="Node2D" parent="."]

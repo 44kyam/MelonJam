@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwyvmk1g2oxes"]
+
+[ext_resource type="Texture2D" uid="uid://dmb2bt7dkjhv2" path="res://Assets/Placeholder/temp_orbs_box.png" id="1_xctsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3n2i"]
+size = Vector2(292, 1019)
+
+[node name="BeadBox" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_f3n2i")
+
+[node name="Box" type="Sprite2D" parent="."]
+texture = ExtResource("1_xctsq")

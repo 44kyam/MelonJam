@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://devi4blg2suhp"]
+
+[ext_resource type="PackedScene" uid="uid://c6cl6i28kqgr" path="res://Scenes/Objects/beads/bead.tscn" id="1_nrwlr"]
+
+[node name="BeadA" instance=ExtResource("1_nrwlr")]

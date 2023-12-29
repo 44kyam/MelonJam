@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6cl6i28kqgr"]
+
+[ext_resource type="Texture2D" uid="uid://dnw4ab31ua2mq" path="res://Assets/Placeholder/temp_orbs.png" id="1_kgvnm"]
+[ext_resource type="Script" path="res://Scenes/Objects/beads/bead.gd" id="1_r8jtx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b03et"]
+radius = 124.004
+
+[node name="Bead" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+input_pickable = true
+script = ExtResource("1_r8jtx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kgvnm")
+region_enabled = true
+region_rect = Rect2(102, 86, 244, 244)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b03et")
