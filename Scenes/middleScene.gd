@@ -312,6 +312,7 @@ func toBeadBoxScene():
 
 func toBookScene():
 	if !pause:
+		print("i")
 		toBookCamera.emit(0)
 
 #play tutorial
@@ -442,6 +443,7 @@ func yeetBox():
 
 func _on_rbutt_input_event(_viewport, event, _shape_idx):
 	if !pause and $Camera2D/rbutt.hover and event.is_action_pressed("leftMouseClick") and cameraPos < 2:
+			$Audio/click.play()
 			match cameraPos:
 				0:
 					$AnimationPlayer.play("leftToMid")
@@ -456,7 +458,8 @@ func _on_rbutt_input_event(_viewport, event, _shape_idx):
 
 func _on_l_butt_input_event(_viewport, event, _shape_idx):
 	if !pause and $Camera2D/LButt.hover and event.is_action_pressed("leftMouseClick") and cameraPos > 0:
-			print(cameraPos)
+			#print(cameraPos)
+			$Audio/click.play()
 			match cameraPos:
 				1:
 					$AnimationPlayer.play("cameraToLeft")

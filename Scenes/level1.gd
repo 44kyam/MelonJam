@@ -8,7 +8,7 @@ func _ready():
 func _on_middle_scene_to_bead_box_camera(ans, tutorial):
 	$MiddleScene.process_mode = PROCESS_MODE_DISABLED
 	$BeadBoxScene.resetAll()
-	
+	$Audio/drawer.play()
 	if tutorial:
 		$BeadBoxScene.answer = "ieaei"
 	else:
@@ -25,6 +25,7 @@ func _on_middle_scene_to_bead_box_camera(ans, tutorial):
 	$BeadBoxScene/Camera2D.make_current()
 	
 	if tutorial:
+		$BeadBoxScene.pause = true
 		$BeadBoxScene.runTutorial()
 
 # to middle scene
@@ -59,6 +60,7 @@ func _on_middle_scene_to_book_camera(code):
 	$MiddleScene.process_mode = PROCESS_MODE_DISABLED
 	
 	$BookScene/Buttons.visible = false
+	$BookScene/page.play()
 	
 	$BookScene.position = Vector2($MiddleScene/Camera2D.position.x, -2000)
 	var tween = create_tween()
@@ -100,12 +102,13 @@ func _on_book_scene_to_bead_box():
 	$BeadBoxScene/Camera2D.make_current()
 	$BookScene.position = Vector2(10, -1620)
 	$BookScene.modulate = Color(1,1,1)
+	
 
 # bead to book scene
 func _on_bead_box_scene_to_book_camera(code):
-	# reset book
-	$BookScene.reset()
+	
 	$BookScene.exit = code
+	$BookScene.reset()
 	
 	var tween = create_tween()
 	tween.set_parallel(true)

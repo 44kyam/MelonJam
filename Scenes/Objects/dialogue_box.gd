@@ -25,6 +25,7 @@ func _mouse_exit():
 func loadDialogue(dial, stopPause):
 	#if dialogue_idx < dialogues.size():
 		#print(dial)
+		$AnimationPlayer.play("typing")
 		$"..".pause = true
 		$RichTextLabel.bbcode_text = dial #dialogues[dialogue_idx]
 		var dialLen = $RichTextLabel.text.length()
@@ -32,7 +33,7 @@ func loadDialogue(dial, stopPause):
 		var time = typeChars * 0.02
 		var tween = create_tween()
 		tween.tween_property($RichTextLabel, "visible_characters", dialLen, time)
-		await tween.finished.connect(stopAudio)
+		await tween.finished
 		
 		finish = true
 		
@@ -41,5 +42,3 @@ func loadDialogue(dial, stopPause):
 	#else:
 		#queue_free()
 		
-func stopAudio():
-	$typing.stop()

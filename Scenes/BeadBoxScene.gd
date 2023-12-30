@@ -49,24 +49,30 @@ func new_bead_click(bead):
 		
 # trigger when area is click
 func snap_bead_to_area(area,idx,fill):
-	var same = ansArr[idx] and beadClick and ansArr[idx].name == currentBead.name
-	
-	if fill:
-		ansArr[idx].queue_free()
-		ansArr[idx] = null
-		playerAnswer[idx] = "0"
-		area.fill = false
-	
-	# if a bead is up
-	if currentBead and beadClick and not same:
-		playerAnswer[idx] = currentBead.letter
-		var dup = beadClone[currentBead.letter].instantiate()
-		$BeadSnap.add_child(dup)
-		dup.position = area.position
-		dup.notClickable = true
-		dup.scale = currentBead.scale
-		ansArr[idx] = dup
-		area.fill = true
+	if !pause:
+		var same = ansArr[idx] and beadClick and ansArr[idx].name == currentBead.name
+		
+		if same:
+			$Audio/Bead.play()
+		else:
+			$Audio/Bead.play()
+		
+		if fill:
+			ansArr[idx].queue_free()
+			ansArr[idx] = null
+			playerAnswer[idx] = "0"
+			area.fill = false
+		
+		# if a bead is up
+		if currentBead and beadClick and not same:
+			playerAnswer[idx] = currentBead.letter
+			var dup = beadClone[currentBead.letter].instantiate()
+			$BeadSnap.add_child(dup)
+			dup.position = area.position
+			dup.notClickable = true
+			dup.scale = currentBead.scale
+			ansArr[idx] = dup
+			area.fill = true
 	
 		#print(playerAnswer)
 	

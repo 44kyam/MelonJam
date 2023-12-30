@@ -1,11 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://cscoucb83lag3"]
+[gd_scene load_steps=9 format=3 uid="uid://cscoucb83lag3"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/dialogue_box.gd" id="1_ksaab"]
 [ext_resource type="Texture2D" uid="uid://xgo616awt5mm" path="res://Assets/Main Scene/mainscene_elements.png" id="2_52ysj"]
 [ext_resource type="Theme" uid="uid://cl0t3ggivdwus" path="res://Scenes/Objects/themes/dialogue_box2.tres" id="3_jgrls"]
+[ext_resource type="AudioStream" uid="uid://bx3brdl5gbnio" path="res://Assets/Audio/nc234332_typing.wav" id="4_suwkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap23n"]
 size = Vector2(662.5, 1032.25)
+
+[sub_resource type="Animation" id="Animation_iwcyp"]
+resource_name = "typing"
+length = 0.6
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Typing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_suwkn")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(-0.1, 0.6)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_n6jcb"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mbhd4"]
+_data = {
+"RESET": SubResource("Animation_n6jcb"),
+"typing": SubResource("Animation_iwcyp")
+}
 
 [node name="DialogueBox" type="Area2D"]
 script = ExtResource("1_ksaab")
@@ -31,4 +64,9 @@ bbcode_enabled = true
 text = "But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet. But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet.But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet."
 scroll_following = true
 
-[node name="typing" type="AudioStreamPlayer2D" parent="."]
+[node name="Typing" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mbhd4")
+}

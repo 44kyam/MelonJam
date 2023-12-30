@@ -34,12 +34,14 @@ func _input(event):
 		
 
 func beadDown():
+	$sfx.play()
 	scale = Vector2(0.5,0.5)
 	z_index = 1
 	position.y += 30
 	click = false
 
 func beadUp():
+	$sfx.play()
 	scale = Vector2(0.6,0.6)
 	z_index = 5
 	position.y -= 30

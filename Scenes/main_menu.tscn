@@ -107,6 +107,7 @@ color = Color(0, 0, 0, 0)
 
 [node name="StartButton" parent="Button" instance=ExtResource("2_dskgr")]
 position = Vector2(-576, 40)
+scale = Vector2(0.8, 0.8)
 tag = "expand"
 
 [node name="ClickAusio" type="AudioStreamPlayer2D" parent="."]

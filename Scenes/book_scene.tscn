@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkaonbjywuo3p"]
+[gd_scene load_steps=13 format=3 uid="uid://bkaonbjywuo3p"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_4jaii"]
 [ext_resource type="Texture2D" uid="uid://dp4nnlerwspva" path="res://Assets/Book Scene/book_background.png" id="2_adnxt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bcajm1vfiygap" path="res://Assets/Book Scene/book_page_02.png" id="6_4okuo"]
 [ext_resource type="Texture2D" uid="uid://dwij6xfwbkc5s" path="res://Assets/Book Scene/book_page_03.png" id="7_jojro"]
 [ext_resource type="Texture2D" uid="uid://kxwennrxipee" path="res://Assets/Book Scene/book_page_04.png" id="8_i7dq2"]
+[ext_resource type="AudioStream" uid="uid://tbjgchph5t1r" path="res://Assets/Audio/nc297789_page.wav" id="12_wv6in"]
 
 [node name="BookScene" instance=ExtResource("1_4jaii")]
 script = ExtResource("2_ygxg4")
@@ -52,6 +53,9 @@ position = Vector2(850, 200)
 
 [node name="BookXButton" parent="Buttons" index="2" instance=ExtResource("5_i12ui")]
 position = Vector2(-860, 370)
+
+[node name="page" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("12_wv6in")
 
 [connection signal="input_event" from="Buttons/BookLeftButton" to="." method="_on_book_left_button_input_event"]
 [connection signal="input_event" from="Buttons/BookRightButton" to="." method="_on_book_right_button_input_event"]

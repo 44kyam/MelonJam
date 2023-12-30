@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bilre1384vbj8"]
+[gd_scene load_steps=31 format=3 uid="uid://bilre1384vbj8"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_8o6wh"]
 [ext_resource type="Script" path="res://Scenes/middleScene.gd" id="2_4soy4"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dmqgtb1logkd6" path="res://Scenes/Objects/l_butt.tscn" id="13_fkjeg"]
 [ext_resource type="Texture2D" uid="uid://7m737fnh0b7v" path="res://Assets/arrow.png" id="16_ut2pk"]
 [ext_resource type="FontFile" uid="uid://dprhbmsy2ud0b" path="res://Assets/Font/Itim-Regular.ttf" id="17_qfh2p"]
+[ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="18_en4pc"]
 
 [sub_resource type="Animation" id="Animation_cnwq3"]
 length = 0.001
@@ -383,6 +384,11 @@ libraries = {
 "": SubResource("AnimationLibrary_j4mxb")
 }
 autoplay = "tutorial"
+
+[node name="Audio" type="Node2D" parent="." index="15"]
+
+[node name="click" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource("18_en4pc")
 
 [connection signal="input_event" from="Interactables/Drawer" to="." method="_on_drawer_input_event"]
 [connection signal="input_event" from="Interactables/DrawerDoor" to="." method="_on_drawer_door_input_event"]

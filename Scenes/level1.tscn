@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3wispxg52g6e"]
+[gd_scene load_steps=11 format=3 uid="uid://c3wispxg52g6e"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_04xr7"]
 [ext_resource type="Script" path="res://Scenes/level1.gd" id="2_dybqk"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bkaonbjywuo3p" path="res://Scenes/book_scene.tscn" id="4_ast7c"]
 [ext_resource type="PackedScene" uid="uid://0q3mulwalu7b" path="res://Scenes/BeadBoxScene.tscn" id="4_tc6bh"]
 [ext_resource type="PackedScene" uid="uid://bilre1384vbj8" path="res://Scenes/middleScene.tscn" id="5_8nlw3"]
-[ext_resource type="AudioStream" uid="uid://dulm86betr7hq" path="res://Assets/Audio/BGM旅の行方.mp3" id="7_m84pr"]
+[ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="7_k6e5h"]
+[ext_resource type="AudioStream" uid="uid://p5ifbf5ukwu0" path="res://Assets/Audio/nc263748_drawer.mp3" id="9_6a6sw"]
 
 [sub_resource type="Animation" id="Animation_b7ptv"]
 resource_name = "loadGame"
@@ -82,18 +83,23 @@ libraries = {
 }
 autoplay = "loadGame"
 
-[node name="SolidColor" type="ColorRect" parent="." index="7"]
+[node name="Audio" type="Node2D" parent="." index="7"]
+position = Vector2(-1855, -694)
+
+[node name="click" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource("7_k6e5h")
+
+[node name="drawer" type="AudioStreamPlayer2D" parent="Audio" index="1"]
+stream = ExtResource("9_6a6sw")
+volume_db = 20.0
+
+[node name="SolidColor" type="ColorRect" parent="." index="8"]
 z_index = 11
 offset_left = -1855.0
 offset_top = -694.0
 offset_right = 1884.0
 offset_bottom = 681.0
-color = Color(0.117647, 0.027451, 0.101961, 1)
-
-[node name="clickSound" type="AudioStreamPlayer2D" parent="." index="8"]
-stream = ExtResource("7_m84pr")
-volume_db = -1.30087
-autoplay = true
+color = Color(0.117647, 0.027451, 0.101961, 0.8)
 
 [connection signal="toBeadBox" from="BookScene" to="." method="_on_book_scene_to_bead_box"]
 [connection signal="toMainCamera" from="BookScene" to="." method="_on_book_scene_to_main_camera"]
@@ -101,4 +107,3 @@ autoplay = true
 [connection signal="toBookCamera" from="MiddleScene" to="." method="_on_middle_scene_to_book_camera"]
 [connection signal="toBookCamera" from="BeadBoxScene" to="." method="_on_bead_box_scene_to_book_camera"]
 [connection signal="toMainCamera" from="BeadBoxScene" to="." method="_on_bead_box_scene_to_main_camera"]
-[connection signal="finished" from="clickSound" to="." method="_on_bgm_finished"]
