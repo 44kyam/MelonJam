@@ -12,9 +12,15 @@ func _ready():
 	ogPosition = position
 
 func _mouse_enter():
+	if !click:
+		scale.x += 0.07
+		scale.y += 0.07
 	hover = true
 	
 func _mouse_exit():
+	if !click:
+		scale.x -= 0.06
+		scale.y -= 0.06
 	hover = false
 
 func _input(event):
@@ -30,13 +36,13 @@ func _input(event):
 func beadDown():
 	scale = Vector2(0.5,0.5)
 	z_index = 1
-	position.y += 40
+	position.y += 30
 	click = false
 
 func beadUp():
 	scale = Vector2(0.6,0.6)
 	z_index = 5
-	position.y -= 40
+	position.y -= 30
 	click = true
 	get_node("../..").new_bead_click(self)
 

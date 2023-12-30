@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blfml0f3ktfoa"]
+
+[ext_resource type="PackedScene" uid="uid://c6cl6i28kqgr" path="res://Scenes/Objects/beads/bead.tscn" id="1_2ngga"]
+
+[node name="BeadJ" instance=ExtResource("1_2ngga")]
+
+[node name="Sprite2D" parent="." index="0"]
+region_rect = Rect2(440, 1306, 244, 244)

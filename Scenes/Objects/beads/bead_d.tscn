@@ -5,4 +5,4 @@
 [node name="BeadD" instance=ExtResource("1_3rgsk")]
 
 [node name="Sprite2D" parent="." index="0"]
-region_rect = Rect2(456, 401, 244, 244)
+region_rect = Rect2(440, 390, 244, 244)

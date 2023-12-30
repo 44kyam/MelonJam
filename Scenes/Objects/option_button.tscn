@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://yoxtqame1g32"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_5anu3"]
+[ext_resource type="Texture2D" uid="uid://tco76sseidrc" path="res://Assets/overlay icons.png" id="2_6ss3a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ungbn"]
+size = Vector2(101, 95)
+
+[node name="OptionButton" instance=ExtResource("1_5anu3")]
+
+[node name="Img" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_6ss3a")
+region_enabled = true
+region_rect = Rect2(170, 37, 102, 92)
+
+[node name="ImgHover" type="Sprite2D" parent="." index="1"]
+visible = false
+texture = ExtResource("2_6ss3a")
+region_enabled = true
+region_rect = Rect2(170, 187, 102, 92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_ungbn")

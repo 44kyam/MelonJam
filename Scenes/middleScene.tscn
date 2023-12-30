@@ -1,40 +1,325 @@
-[gd_scene load_steps=5 format=3 uid="uid://bilre1384vbj8"]
+[gd_scene load_steps=23 format=3 uid="uid://bilre1384vbj8"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_8o6wh"]
 [ext_resource type="Script" path="res://Scenes/middleScene.gd" id="2_4soy4"]
-[ext_resource type="Texture2D" uid="uid://bek1yvvb6rbga" path="res://Assets/Placeholder/mainScreenBG.png" id="3_c5ohy"]
+[ext_resource type="Texture2D" uid="uid://du78qkroeqo8s" path="res://Assets/Main Scene/mainscene_bottom.png" id="3_7cdjv"]
+[ext_resource type="Texture2D" uid="uid://c03juac5o16re" path="res://Assets/charm_UI_clean_render_drawer_carpet.png" id="3_u5cuc"]
+[ext_resource type="Texture2D" uid="uid://cenb4vdsdq82g" path="res://Assets/Sprites/Zeke_sprite_01.png" id="4_g8ntp"]
 [ext_resource type="PackedScene" uid="uid://dn7r5vvagf7vt" path="res://Scenes/Objects/dialogue_box.tscn" id="4_ppsmi"]
+[ext_resource type="Texture2D" uid="uid://dfhusqk5w41xo" path="res://Assets/Main Scene/mainscene_top.png" id="5_gl0yi"]
+[ext_resource type="Texture2D" uid="uid://dtlqhmybq7cec" path="res://Assets/Sprites/Ray_sprite_01.png" id="6_2xwjr"]
+[ext_resource type="Texture2D" uid="uid://csp0s3tvpj12y" path="res://Assets/Sprites/Eld_sprite_01.png" id="7_dk76a"]
+[ext_resource type="PackedScene" uid="uid://cy026p46xtkjq" path="res://Scenes/Objects/drawer.tscn" id="8_37wpy"]
+[ext_resource type="PackedScene" uid="uid://c3xgqtty6lqdb" path="res://Scenes/Objects/drawer_door.tscn" id="9_eb63o"]
+[ext_resource type="PackedScene" uid="uid://d1g8k5s1uyfpy" path="res://Scenes/Objects/books.tscn" id="9_mhnlx"]
+[ext_resource type="Texture2D" uid="uid://bek1yvvb6rbga" path="res://Assets/Placeholder/mainScreenBG.png" id="9_tjefy"]
+[ext_resource type="PackedScene" uid="uid://cscoucb83lag3" path="res://Scenes/Objects/dialogue_box2.tscn" id="10_fq7sk"]
+
+[sub_resource type="Animation" id="Animation_cnwq3"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_21ewa"]
+resource_name = "cameraToRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SolidColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2, -2), Vector2(550, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_fo343"]
+resource_name = "next_transition"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SolidColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SolidColor:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.027451, 0.101961, 0), Color(0.0666667, 0.0117647, 0.054902, 1), Color(0.0666667, 0.0117647, 0.054902, 1), Color(0.0666667, 0.0117647, 0.054902, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"runNext"
+}, {
+"args": [],
+"method": &"startNext"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_eh8f3"]
+resource_name = "cameraToLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SolidColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2, -2), Vector2(-550, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_8c0xv"]
+resource_name = "leftToMid"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SolidColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-550, 2), Vector2(-2, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_xkvj1"]
+resource_name = "rightToMid"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SolidColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(550, 2), Vector2(-2, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_a54xs"]
+resource_name = "ending"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SolidColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SolidColor:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.027451, 0.101961, 0), Color(0.0666667, 0.0117647, 0.054902, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"toEnding"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mvnse"]
+_data = {
+"RESET": SubResource("Animation_cnwq3"),
+"cameraToLeft": SubResource("Animation_eh8f3"),
+"cameraToRight": SubResource("Animation_21ewa"),
+"ending": SubResource("Animation_a54xs"),
+"leftToMid": SubResource("Animation_8c0xv"),
+"next_transition": SubResource("Animation_fo343"),
+"rightToMid": SubResource("Animation_xkvj1")
+}
 
 [node name="MiddleScene" instance=ExtResource("1_8o6wh")]
 script = ExtResource("2_4soy4")
 
-[node name="Background" type="Sprite2D" parent="." index="0"]
-position = Vector2(-1, -3)
-scale = Vector2(2.29241, 2.29241)
-texture = ExtResource("3_c5ohy")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_mvnse")
+}
 
-[node name="Camera2D" parent="." index="1"]
+[node name="Carpet" type="Sprite2D" parent="." index="1"]
+modulate = Color(0.619608, 0.482353, 0.341176, 1)
+position = Vector2(-734, 0)
+texture = ExtResource("3_u5cuc")
+flip_h = true
+
+[node name="Carpet2" type="Sprite2D" parent="." index="2"]
+modulate = Color(0.619608, 0.482353, 0.341176, 1)
+position = Vector2(734, 0)
+texture = ExtResource("3_u5cuc")
+
+[node name="BGBottom" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("3_7cdjv")
+
+[node name="Sprites" type="Node2D" parent="." index="4"]
+
+[node name="Zeke" type="Sprite2D" parent="Sprites" index="0"]
+visible = false
+position = Vector2(-254, 25)
+scale = Vector2(0.846764, 0.846764)
+texture = ExtResource("4_g8ntp")
+
+[node name="Ray" type="Sprite2D" parent="Sprites" index="1"]
+visible = false
+position = Vector2(-254, 25)
+scale = Vector2(0.846764, 0.846764)
+texture = ExtResource("6_2xwjr")
+
+[node name="Eld" type="Sprite2D" parent="Sprites" index="2"]
+visible = false
+position = Vector2(-254, 25)
+scale = Vector2(0.846764, 0.846764)
+texture = ExtResource("7_dk76a")
+
+[node name="BGTop" type="Sprite2D" parent="." index="5"]
+texture = ExtResource("5_gl0yi")
+
+[node name="Interactables" type="Node2D" parent="." index="6"]
+
+[node name="Drawer" parent="Interactables" index="0" instance=ExtResource("8_37wpy")]
+position = Vector2(1105, 351)
+tag = "expand"
+
+[node name="DrawerDoor" parent="Interactables" index="1" instance=ExtResource("9_eb63o")]
+position = Vector2(1462, 0)
+tag = "slide"
+
+[node name="Books" parent="Interactables" index="2" instance=ExtResource("9_mhnlx")]
+position = Vector2(-1114, -235)
+
+[node name="Camera2D" parent="." index="7"]
+position = Vector2(-2, -2)
 position_smoothing_enabled = false
 
-[node name="Label" parent="Camera2D" index="0"]
-offset_left = -930.0
-offset_top = -525.0
-offset_right = -609.0
-offset_bottom = -456.0
-
-[node name="ColorRect" type="ColorRect" parent="." index="3"]
+[node name="ColorRect" type="ColorRect" parent="." index="9"]
+visible = false
 offset_left = 645.0
 offset_top = -513.0
 offset_right = 908.0
 offset_bottom = -356.0
 color = Color(0, 0, 0, 1)
 
-[node name="DialogueBox2" parent="." index="4" instance=ExtResource("4_ppsmi")]
+[node name="DialogueBox2" parent="." index="10" instance=ExtResource("10_fq7sk")]
 visible = false
-position = Vector2(26, 163)
+position = Vector2(12, 111)
 
-[node name="DialogueBox" parent="." index="5" instance=ExtResource("4_ppsmi")]
+[node name="DialogueBox" parent="." index="11" instance=ExtResource("4_ppsmi")]
 visible = false
-position = Vector2(19, -213)
+position = Vector2(19, -312)
 
+[node name="Sprite2D" type="Sprite2D" parent="." index="12"]
+visible = false
+position = Vector2(-6, 3)
+scale = Vector2(2.27465, 2.2312)
+texture = ExtResource("9_tjefy")
+
+[node name="SolidColor" type="ColorRect" parent="." index="13"]
+z_index = 11
+offset_left = -1855.0
+offset_top = -622.0
+offset_right = 1884.0
+offset_bottom = 633.0
+color = Color(0.117647, 0.027451, 0.101961, 0)
+
+[connection signal="input_event" from="Interactables/Drawer" to="." method="_on_drawer_input_event"]
+[connection signal="input_event" from="Interactables/DrawerDoor" to="." method="_on_drawer_door_input_event"]
 [connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

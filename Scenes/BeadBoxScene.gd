@@ -2,6 +2,9 @@ extends Node2D
 
 signal toMainCamera
 
+var inTutorial = false
+var pause = false
+
 var beadClick: bool = false
 var currentBead = null # hold current click bead
 var beadObj = {} # holds all beads in the scene
@@ -12,6 +15,10 @@ var beadClone = {
 	"d" : preload("res://Scenes/Objects/beads/bead_d.tscn"),
 	"e" : preload("res://Scenes/Objects/beads/bead_e.tscn"),
 	"f" : preload("res://Scenes/Objects/beads/bead_f.tscn"),
+	"g" : preload("res://Scenes/Objects/beads/bead_g.tscn"),
+	"h" : preload("res://Scenes/Objects/beads/bead_h.tscn"),
+	"i" : preload("res://Scenes/Objects/beads/bead_i.tscn"),
+	"j" : preload("res://Scenes/Objects/beads/bead_j.tscn"),
 }
 var playerAnswer = "00000" #holds player's current answer choice
 var answer = ""
@@ -42,9 +49,6 @@ func new_bead_click(bead):
 # trigger when area is click
 func snap_bead_to_area(area,idx,fill):
 	var same = ansArr[idx] and beadClick and ansArr[idx].name == currentBead.name
-		
-	
-	print(same)
 	
 	if fill:
 		ansArr[idx].queue_free()
@@ -94,9 +98,14 @@ func _on_validate_button_input_event(_viewport, event, _shape_idx):
 		validate()
 
 func validate():
-	if playerAnswer == answer:
+	var answerArr = answer.split(" ")
+	
+	if playerAnswer in answerArr:
 		print("correct")
-		toMainCamera.emit("correct")
+		if inTutorial:
+			runTutorial()
+		else:
+			toMainCamera.emit("correct")
 
 # book button click
 func _on_book_button_input_event(_viewport, event, _shape_idx):
@@ -107,4 +116,82 @@ func _on_book_button_input_event(_viewport, event, _shape_idx):
 func _on_exit_button_input_event(_viewport, event, _shape_idx):
 	if $UI/ExitButton.hover and event.is_action_pressed("leftMouseClick"):
 		toMainCamera.emit("")
+
+# play tutorial
+
+var tutorial = [
+	#[PULL HELP SCREEN UP. FORCED TUTORIAL TIME]
+	["Let me fetch the notes I took before…", 1],
+	["From what I remember, the bead that goes in the centre should be the subject.", 1],
+	["So… the main focus is of my wish.", 1],
+	["In this case, it’ll be for well-being and happiness...", 1],
+	["Which means it’ll be the green bead!", 1],
+	["As for the polars, it’ll be the beads for drawing in or repelling certain energies.", 1],
+	["I’m wishing for a lot of positivity and happiness, so I’m gonna grab the yellow bead.", 1],
+	["I’m gonna put it on both sides as symmetry helps with clear and concise charms.", 1],
+	["As my mentor likes to say, asymmetrical charms are for greedy people.", 1],
+	["I’ll save that for my clients.", 1],
+	["Finally, the teal beads on the emphasis spots for the medium push.", 1],
+	["I’m not going to use up all my luck immediately, not on my first day!", 1],
+	["So the charm should be - teal, yellow, green, yellow, teal.", 1],
+	[null, 3],
+	["There we go!", 1],
+	["Hopefully this charm will make sure things go smoothly for me.", 1],
+	["With this… I think I’m ready to open for business.", 1],
+	["...!", 1],
+	["I think I hear someone already.", 1],
+	["Coming…!", 1],
+	[null, 2]
+	]
+var tutorialIdx = 0
+
+
+var box2 = preload("res://Scenes/Objects/dialogue_box2.tscn")
+var box = null
+
+func runTutorial():
+	inTutorial = true
+	pause = true
 	
+	
+	if tutorialIdx < len(tutorial):
+		yeetBox()
+		
+		var lineArr = tutorial[tutorialIdx]
+		var i = lineArr[1] # box index
+		var line = lineArr[0] # text
+		match i:
+				
+			1: 
+				box = box2.instantiate()
+	
+			2: 
+				pause = false
+				inTutorial = false
+				toMainCamera.emit("start")
+			
+			3: 
+				pause = false
+				$UI.openTutorialPage()
+		
+		# if box is not null
+		if box != null:
+			add_child(box)
+			box.position = $DialogueBox2.position
+			box.loadDialogue(line, false)
+		
+		tutorialIdx += 1
+
+		
+		
+		
+
+func yeetBox():
+	if box:
+		box.queue_free()
+		box = null
+	
+
+func _input(ev):
+	if inTutorial and ev.is_action_pressed("leftMouseClick") and box != null and box.hover:
+		runTutorial()

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy026p46xtkjq"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_8joy1"]
+[ext_resource type="Texture2D" uid="uid://xgo616awt5mm" path="res://Assets/Main Scene/mainscene_elements.png" id="2_4xakx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_age24"]
+size = Vector2(395, 81)
+
+[node name="Drawer" instance=ExtResource("1_8joy1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_age24")
+
+[node name="Img" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_4xakx")
+region_enabled = true
+region_rect = Rect2(1422, 915, 383, 69)
+
+[node name="ImgHover" type="Sprite2D" parent="." index="2"]
+visible = false
+texture = ExtResource("2_4xakx")
+region_enabled = true
+region_rect = Rect2(1413, 774, 401, 87)

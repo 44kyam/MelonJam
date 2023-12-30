@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1g8k5s1uyfpy"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_eo1oh"]
+[ext_resource type="Texture2D" uid="uid://xgo616awt5mm" path="res://Assets/Main Scene/mainscene_elements.png" id="2_ba31f"]
+
+[node name="Books" instance=ExtResource("1_eo1oh")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(-199, -124, -199, 199, 202, 199, 202, -126, 128, -126, 128, -190, 62, -190, 62, -170, -22, -170, -22, -87, -83, -87, -83, -124)
+
+[node name="Img" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_ba31f")
+region_enabled = true
+region_rect = Rect2(118, 666, 389, 389)
+
+[node name="ImgHover" type="Sprite2D" parent="." index="2"]
+visible = false
+position = Vector2(0, -18)
+scale = Vector2(1.07, 1.07)
+texture = ExtResource("2_ba31f")
+region_enabled = true
+region_rect = Rect2(109, 163, 407, 393)

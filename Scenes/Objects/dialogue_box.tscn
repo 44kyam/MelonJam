@@ -1,31 +1,32 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn7r5vvagf7vt"]
 
-[ext_resource type="Texture2D" uid="uid://shwlib0nhac5" path="res://icon.svg" id="1_hpw6u"]
 [ext_resource type="Script" path="res://Scenes/Objects/dialogue_box.gd" id="2_kagye"]
-[ext_resource type="FontFile" uid="uid://dprhbmsy2ud0b" path="res://Assets/Font/Itim-Regular.ttf" id="3_353aw"]
+[ext_resource type="Texture2D" uid="uid://xgo616awt5mm" path="res://Assets/Main Scene/mainscene_elements.png" id="2_wh011"]
+[ext_resource type="Theme" uid="uid://5cuqfmhtawet" path="res://Scenes/Objects/themes/dialogue_box.tres" id="3_cxr6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap23n"]
-size = Vector2(627, 245)
+size = Vector2(662.5, 866.5)
 
 [node name="DialogueBox" type="Area2D"]
 script = ExtResource("2_kagye")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(304, 121)
+position = Vector2(321.75, 328.75)
 shape = SubResource("RectangleShape2D_ap23n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(295.5, 107.5)
-scale = Vector2(4.57031, 1.61719)
-texture = ExtResource("1_hpw6u")
+position = Vector2(315, 164)
+texture = ExtResource("2_wh011")
+region_enabled = true
+region_rect = Rect2(647, 365, 626, 330)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 48.0
-offset_top = 41.0
-offset_right = 529.0
-offset_bottom = 172.0
+offset_left = 34.0
+offset_top = 26.0
+offset_right = 598.0
+offset_bottom = 238.0
 mouse_filter = 1
-theme_override_colors/default_color = Color(1, 1, 0.282353, 1)
-theme_override_fonts/normal_font = ExtResource("3_353aw")
-theme_override_font_sizes/normal_font_size = 30
+theme = ExtResource("3_cxr6l")
 bbcode_enabled = true
+text = "But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet. But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet.But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet."
+scroll_following = true

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmhu0a5b68u3"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_4abfy"]
+[ext_resource type="Texture2D" uid="uid://jb1myaiuqptx" path="res://Assets/Book Scene/book_buttons.png" id="2_tk653"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blkoi"]
+size = Vector2(125, 123)
+
+[node name="BookRightButton" instance=ExtResource("1_4abfy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_blkoi")
+
+[node name="Img" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_tk653")
+region_enabled = true
+region_rect = Rect2(80, 333, 123, 123)
+
+[node name="ImgHover" type="Sprite2D" parent="." index="2"]
+visible = false
+texture = ExtResource("2_tk653")
+region_enabled = true
+region_rect = Rect2(276, 333, 123, 123)

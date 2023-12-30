@@ -1,0 +1,84 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://5cuqfmhtawet"]
+
+[ext_resource type="FontFile" uid="uid://dprhbmsy2ud0b" path="res://Assets/Font/Itim-Regular.ttf" id="1_m5von"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_4m8i6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oquar"]
+bg_color = Color(0.541176, 0.2, 0.0941176, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtqph"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uap74"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ljdl"]
+bg_color = Color(0.435294, 0.152941, 0.0666667, 0)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nahri"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[resource]
+default_font = ExtResource("1_m5von")
+default_font_size = 42
+RichTextLabel/colors/default_color = Color(0.541176, 0.2, 0.0941176, 1)
+RichTextLabel/constants/line_separation = 2
+VScrollBar/icons/decrement = SubResource("ImageTexture_4m8i6")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_4m8i6")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_4m8i6")
+VScrollBar/icons/increment = SubResource("ImageTexture_4m8i6")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_4m8i6")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_4m8i6")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_oquar")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_jtqph")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_uap74")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_7ljdl")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_nahri")

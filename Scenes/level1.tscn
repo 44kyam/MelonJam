@@ -18,15 +18,11 @@ texture = ExtResource("2_q36ny")
 [node name="Camera2D" parent="." index="1"]
 visible = false
 
-[node name="Label" parent="Camera2D" index="0"]
-offset_left = -930.0
-offset_top = -525.0
-offset_right = -609.0
-offset_bottom = -456.0
-
 [node name="MiddleScene" parent="." index="3" instance=ExtResource("5_8nlw3")]
+unique_name_in_owner = true
 
 [node name="BeadBoxScene" parent="." index="4" instance=ExtResource("4_tc6bh")]
+unique_name_in_owner = true
 position = Vector2(-31, 1329)
 
 [connection signal="toBeadBoxCamera" from="MiddleScene" to="." method="_on_middle_scene_to_bead_box_camera"]
