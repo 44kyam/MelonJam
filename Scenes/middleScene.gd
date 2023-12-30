@@ -20,7 +20,7 @@ var tutorialIdx = 0
 var tutorial = [
 	["What great weather today!", 1],
 	["This is the first time I’ve operated the caravan on my own.", 1],
-	["It’s a bit nerve wracking, but I’m excited to sell charms by myself.", 1],
+	["It’s a bit nerve-wrecking, but I’m excited to sell charms by myself.", 1],
 	["It was sad to leave my mentor’s side as an apprentice, but I’m all grown up now.", 1],
 	["I’m sure I can handle all of this on my own!", 1],
 	["Hm... maybe I can start by making a charm for myself.", 1],
