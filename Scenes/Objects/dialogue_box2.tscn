@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap23n"]
 size = Vector2(662.5, 1032.25)
 
+[sub_resource type="Animation" id="Animation_n6jcb"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_iwcyp"]
 resource_name = "typing"
 length = 0.6
@@ -30,9 +33,6 @@ tracks/0/keys = {
 "times": PackedFloat32Array(-0.1, 0.6)
 }
 tracks/0/use_blend = true
-
-[sub_resource type="Animation" id="Animation_n6jcb"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mbhd4"]
 _data = {

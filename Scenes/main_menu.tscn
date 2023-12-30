@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b6jnr2oauynra" path="res://Scenes/Objects/start_button.tscn" id="2_dskgr"]
 [ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="4_2db4g"]
 
+[sub_resource type="Animation" id="Animation_gblar"]
+resource_name = "audio"
+
 [sub_resource type="Animation" id="Animation_gddte"]
 resource_name = "startGame"
 tracks/0/type = "value"
@@ -69,9 +72,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_gblar"]
-resource_name = "audio"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l0pkg"]
 _data = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bilre1384vbj8"]
+[gd_scene load_steps=34 format=3 uid="uid://bilre1384vbj8"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_8o6wh"]
 [ext_resource type="Script" path="res://Scenes/middleScene.gd" id="2_4soy4"]
@@ -10,14 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://dtlqhmybq7cec" path="res://Assets/Sprites/Ray_sprite_01.png" id="6_2xwjr"]
 [ext_resource type="Texture2D" uid="uid://csp0s3tvpj12y" path="res://Assets/Sprites/Eld_sprite_01.png" id="7_dk76a"]
 [ext_resource type="PackedScene" uid="uid://cy026p46xtkjq" path="res://Scenes/Objects/drawer.tscn" id="8_37wpy"]
+[ext_resource type="PackedScene" uid="uid://cseiusr1hk4v" path="res://Scenes/Objects/regi.tscn" id="9_aql2i"]
 [ext_resource type="PackedScene" uid="uid://c3xgqtty6lqdb" path="res://Scenes/Objects/drawer_door.tscn" id="9_eb63o"]
 [ext_resource type="PackedScene" uid="uid://d1g8k5s1uyfpy" path="res://Scenes/Objects/books.tscn" id="9_mhnlx"]
 [ext_resource type="PackedScene" uid="uid://cscoucb83lag3" path="res://Scenes/Objects/dialogue_box2.tscn" id="10_fq7sk"]
 [ext_resource type="PackedScene" uid="uid://cvhq35qvfll58" path="res://Scenes/Objects/rbutt.tscn" id="12_mbxpq"]
 [ext_resource type="PackedScene" uid="uid://dmqgtb1logkd6" path="res://Scenes/Objects/l_butt.tscn" id="13_fkjeg"]
+[ext_resource type="AudioStream" uid="uid://de1pp2ms8oje8" path="res://Assets/Audio/nc172242_walking.mp3" id="14_v0rtx"]
 [ext_resource type="Texture2D" uid="uid://7m737fnh0b7v" path="res://Assets/arrow.png" id="16_ut2pk"]
 [ext_resource type="FontFile" uid="uid://dprhbmsy2ud0b" path="res://Assets/Font/Itim-Regular.ttf" id="17_qfh2p"]
 [ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="18_en4pc"]
+[ext_resource type="PackedScene" uid="uid://bt0omyc362x0a" path="res://Scenes/Objects/bell.tscn" id="20_tskm4"]
 
 [sub_resource type="Animation" id="Animation_cnwq3"]
 length = 0.001
@@ -80,7 +83,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_a54xs"]
 resource_name = "ending"
-length = 0.6
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -100,7 +103,7 @@ tracks/1/path = NodePath("SolidColor:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.117647, 0.027451, 0.101961, 0), Color(0.0666667, 0.0117647, 0.054902, 1)]
@@ -150,7 +153,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_fo343"]
 resource_name = "next_transition"
-length = 1.2
+length = 1.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -158,7 +161,7 @@ tracks/0/path = NodePath("SolidColor:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 1.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -170,7 +173,7 @@ tracks/1/path = NodePath("SolidColor:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"times": PackedFloat32Array(0, 0.3, 1.2, 1.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.117647, 0.027451, 0.101961, 0), Color(0.0666667, 0.0117647, 0.054902, 1), Color(0.0666667, 0.0117647, 0.054902, 1), Color(0.0666667, 0.0117647, 0.054902, 0)]
@@ -191,6 +194,18 @@ tracks/2/keys = {
 "args": [],
 "method": &"startNext"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Audio/walk:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_xkvj1"]
@@ -315,15 +330,18 @@ texture = ExtResource("5_gl0yi")
 
 [node name="Interactables" type="Node2D" parent="." index="6"]
 
-[node name="Drawer" parent="Interactables" index="0" instance=ExtResource("8_37wpy")]
+[node name="Regi" parent="Interactables" index="0" instance=ExtResource("9_aql2i")]
+position = Vector2(303, 308)
+
+[node name="Drawer" parent="Interactables" index="1" instance=ExtResource("8_37wpy")]
 position = Vector2(1105, 351)
 tag = "expand"
 
-[node name="DrawerDoor" parent="Interactables" index="1" instance=ExtResource("9_eb63o")]
+[node name="DrawerDoor" parent="Interactables" index="2" instance=ExtResource("9_eb63o")]
 position = Vector2(1462, 0)
 tag = "slide"
 
-[node name="Books" parent="Interactables" index="2" instance=ExtResource("9_mhnlx")]
+[node name="Books" parent="Interactables" index="3" instance=ExtResource("9_mhnlx")]
 position = Vector2(-1114, -235)
 
 [node name="Camera2D" parent="." index="7"]
@@ -335,6 +353,10 @@ position = Vector2(869, 460)
 
 [node name="LButt" parent="Camera2D" index="3" instance=ExtResource("13_fkjeg")]
 position = Vector2(-862, 441)
+
+[node name="walk" type="AudioStreamPlayer2D" parent="UI/Audio" index="1"]
+position = Vector2(-2, 2)
+stream = ExtResource("14_v0rtx")
 
 [node name="ColorRect" type="ColorRect" parent="." index="9"]
 visible = false
@@ -377,7 +399,7 @@ offset_left = -1855.0
 offset_top = -622.0
 offset_right = 1884.0
 offset_bottom = 633.0
-color = Color(0.117647, 0.027451, 0.101961, 0)
+color = Color(0.0666667, 0.0117647, 0.054902, 0)
 
 [node name="AP2" type="AnimationPlayer" parent="." index="14"]
 libraries = {
@@ -389,6 +411,9 @@ autoplay = "tutorial"
 
 [node name="click" type="AudioStreamPlayer2D" parent="Audio" index="0"]
 stream = ExtResource("18_en4pc")
+
+[node name="InteractiveBell" parent="." index="16" instance=ExtResource("20_tskm4")]
+position = Vector2(-655, 380)
 
 [connection signal="input_event" from="Interactables/Drawer" to="." method="_on_drawer_input_event"]
 [connection signal="input_event" from="Interactables/DrawerDoor" to="." method="_on_drawer_door_input_event"]

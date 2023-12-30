@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://cseiusr1hk4v"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_xidyb"]
+[ext_resource type="AudioStream" uid="uid://cbx8givdmm670" path="res://Assets/Audio/nc258185_register.mp3" id="2_pyp5v"]
+[ext_resource type="Texture2D" uid="uid://2dxnnw64dsc4" path="res://Assets/Main Scene/mainscene_elements_2.png" id="3_aniia"]
+
+[sub_resource type="Animation" id="Animation_x1gxv"]
+resource_name = "regi"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.6), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HoverAudio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cdag5"]
+_data = {
+"regi": SubResource("Animation_x1gxv")
+}
+
+[node name="Regi" instance=ExtResource("1_xidyb")]
+tag = "regi"
+
+[node name="HoverAudio" parent="." index="0"]
+stream = ExtResource("2_pyp5v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_aniia")
+region_enabled = true
+region_rect = Rect2(87, 466, 558, 430)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_cdag5")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="3"]
+polygon = PackedVector2Array(-222, 38, -217, 133, 133, 177, 218, 128, 173, -192, -52, -192, -84, -149, -180, -91)
