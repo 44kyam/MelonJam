@@ -37,7 +37,7 @@ var dialogues = [
 	# level 0 - zeke
 	["Woah!", 1], 
 	["Hello. I heard that there was a caravan in town specialising in charms.", 0], 
-	["Is this the correct place?.", 0], 
+	["Is this the correct place?", 0], 
 	["Yes! I do make charms.", 1], 
 	["How may I help you today?", 1], 
 	["Oh, that’s great.", 0], 
@@ -55,7 +55,7 @@ var dialogues = [
 	["Yes, everything in my vault is missing.", 0], 
 	["Mind you, it’s the size of a large barn.", 0], 
 	["No evidence of how it vanished, either.", 0], 
-	["The lock is still intact and all my guards are alive.", 0], 
+	["The lock is still intact and all my guards are unscathed.", 0], 
 	["WOAH... that’s crazy...", 1], 
 	["I know...", 0], 
 	["That’s very unfortunate...", 1],
