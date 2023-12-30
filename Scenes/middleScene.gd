@@ -1,6 +1,8 @@
 extends Node2D
 
 signal toBeadBoxCamera
+signal toBookCamera
+
 var nightImg = preload("res://Assets/Main Scene/mainscene_bottom_dark.png")
 
 var pause = true
@@ -284,10 +286,6 @@ func startGame():
 	
 
 # scene change clickables 
-func _on_color_rect_gui_input(event):
-	if event.is_action_pressed("leftMouseClick"):
-		toBeadBoxScene()
-
 func _on_drawer_input_event(_viewport, event, _shape_idx):
 	if $Interactables/Drawer.hover and event.is_action_pressed("leftMouseClick"):
 		toBeadBoxScene()
@@ -295,13 +293,19 @@ func _on_drawer_input_event(_viewport, event, _shape_idx):
 func _on_drawer_door_input_event(_viewport, event, _shape_idx):
 	if $Interactables/DrawerDoor.hover and event.is_action_pressed("leftMouseClick"):
 		toBeadBoxScene()
+
+func _on_books_input_event(_viewport, event, _shape_idx):
+	if $Interactables/Books.hover and event.is_action_pressed("leftMouseClick"):
+		toBookScene()
 		
 
 func toBeadBoxScene():
-	print(pause)
 	if !pause:
 		toBeadBoxCamera.emit(answers[level], inTutorial)
 
+func toBookScene():
+	if !pause:
+		toBookCamera.emit(0)
 
 #play tutorial
 func runTutorial():
@@ -419,5 +423,3 @@ func yeetBox():
 	if box:
 		box.queue_free()
 		box = null
-
-

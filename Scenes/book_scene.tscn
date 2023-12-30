@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkaonbjywuo3p"]
+[gd_scene load_steps=12 format=3 uid="uid://bkaonbjywuo3p"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_4jaii"]
 [ext_resource type="Texture2D" uid="uid://dp4nnlerwspva" path="res://Assets/Book Scene/book_background.png" id="2_adnxt"]
 [ext_resource type="Script" path="res://Scenes/book_scene.gd" id="2_ygxg4"]
+[ext_resource type="Texture2D" uid="uid://c03juac5o16re" path="res://Assets/charm_UI_clean_render_drawer_carpet.png" id="3_368ep"]
 [ext_resource type="PackedScene" uid="uid://dcwlk7kdxw76u" path="res://Scenes/Objects/book_left_button.tscn" id="3_hqkpe"]
 [ext_resource type="PackedScene" uid="uid://dmhu0a5b68u3" path="res://Scenes/Objects/book_right_button.tscn" id="4_omg0a"]
 [ext_resource type="Texture2D" uid="uid://bby8436ceytse" path="res://Assets/Book Scene/book_page_01.png" id="5_4evc7"]
@@ -14,10 +15,15 @@
 [node name="BookScene" instance=ExtResource("1_4jaii")]
 script = ExtResource("2_ygxg4")
 
-[node name="Background" type="Sprite2D" parent="." index="0"]
+[node name="BackgroundCarpet" type="Sprite2D" parent="." index="0"]
+position = Vector2(1023, -6)
+rotation = -3.14159
+texture = ExtResource("3_368ep")
+
+[node name="Background" type="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_adnxt")
 
-[node name="Pages" type="Node2D" parent="." index="1"]
+[node name="Pages" type="Node2D" parent="." index="2"]
 
 [node name="p1" type="Sprite2D" parent="Pages" index="0"]
 texture = ExtResource("5_4evc7")
@@ -34,7 +40,8 @@ texture = ExtResource("7_jojro")
 visible = false
 texture = ExtResource("8_i7dq2")
 
-[node name="Buttons" type="Node2D" parent="." index="2"]
+[node name="Buttons" type="Node2D" parent="." index="3"]
+visible = false
 z_index = 3
 
 [node name="BookLeftButton" parent="Buttons" index="0" instance=ExtResource("3_hqkpe")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3wispxg52g6e"]
+[gd_scene load_steps=7 format=3 uid="uid://c3wispxg52g6e"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_04xr7"]
 [ext_resource type="Script" path="res://Scenes/level1.gd" id="2_dybqk"]
 [ext_resource type="Texture2D" uid="uid://bek1yvvb6rbga" path="res://Assets/Placeholder/mainScreenBG.png" id="2_q36ny"]
+[ext_resource type="PackedScene" uid="uid://bkaonbjywuo3p" path="res://Scenes/book_scene.tscn" id="4_ast7c"]
 [ext_resource type="PackedScene" uid="uid://0q3mulwalu7b" path="res://Scenes/BeadBoxScene.tscn" id="4_tc6bh"]
 [ext_resource type="PackedScene" uid="uid://bilre1384vbj8" path="res://Scenes/middleScene.tscn" id="5_8nlw3"]
 
@@ -18,12 +19,19 @@ texture = ExtResource("2_q36ny")
 [node name="Camera2D" parent="." index="1"]
 visible = false
 
-[node name="MiddleScene" parent="." index="3" instance=ExtResource("5_8nlw3")]
+[node name="BookScene" parent="." index="3" instance=ExtResource("4_ast7c")]
+position = Vector2(10, -1620)
+
+[node name="MiddleScene" parent="." index="4" instance=ExtResource("5_8nlw3")]
 unique_name_in_owner = true
 
-[node name="BeadBoxScene" parent="." index="4" instance=ExtResource("4_tc6bh")]
+[node name="BeadBoxScene" parent="." index="5" instance=ExtResource("4_tc6bh")]
 unique_name_in_owner = true
 position = Vector2(-31, 1329)
 
+[connection signal="toBeadBox" from="BookScene" to="." method="_on_book_scene_to_bead_box"]
+[connection signal="toMainCamera" from="BookScene" to="." method="_on_book_scene_to_main_camera"]
 [connection signal="toBeadBoxCamera" from="MiddleScene" to="." method="_on_middle_scene_to_bead_box_camera"]
+[connection signal="toBookCamera" from="MiddleScene" to="." method="_on_middle_scene_to_book_camera"]
+[connection signal="toBookCamera" from="BeadBoxScene" to="." method="_on_bead_box_scene_to_book_camera"]
 [connection signal="toMainCamera" from="BeadBoxScene" to="." method="_on_bead_box_scene_to_main_camera"]

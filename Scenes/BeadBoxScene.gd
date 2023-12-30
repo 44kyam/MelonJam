@@ -1,6 +1,7 @@
 extends Node2D
 
 signal toMainCamera
+signal toBookCamera
 
 var inTutorial = false
 var pause = false
@@ -67,7 +68,7 @@ func snap_bead_to_area(area,idx,fill):
 		ansArr[idx] = dup
 		area.fill = true
 	
-		print(playerAnswer)
+		#print(playerAnswer)
 	
 
 # reset button click function
@@ -101,7 +102,7 @@ func validate():
 	var answerArr = answer.split(" ")
 	
 	if playerAnswer in answerArr:
-		print("correct")
+		#print("correct")
 		if inTutorial:
 			runTutorial()
 		else:
@@ -109,12 +110,13 @@ func validate():
 
 # book button click
 func _on_book_button_input_event(_viewport, event, _shape_idx):
-	pass # Replace with function body.
+	if $UI/BookButton.hover and event.is_action_pressed("leftMouseClick"):
+		toBookCamera.emit(1)
 	
 
 # exit button click
 func _on_exit_button_input_event(_viewport, event, _shape_idx):
-	if $UI/ExitButton.hover and event.is_action_pressed("leftMouseClick"):
+	if !inTutorial and $UI/ExitButton.hover and event.is_action_pressed("leftMouseClick"):
 		toMainCamera.emit("")
 
 # play tutorial

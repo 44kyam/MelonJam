@@ -19,13 +19,13 @@ func _process(_delta):
 	move_and_slide() # auto include delta
 
 func _mouse_enter():
-	print("enter")
+	#print("enter")
 	mouseIn = true
 	self.scale = Vector2(2,2)
 	
 	
 func _mouse_exit():
-	print("leave")
+	#print("leave")
 	mouseIn = false
 	self.scale = Vector2(1,1)
 

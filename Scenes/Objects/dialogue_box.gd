@@ -17,14 +17,14 @@ func _ready():
 
 func _mouse_enter():
 	hover = true
-	print("hover")
+	#print("hover")
 	
 func _mouse_exit():
 	hover = false
 
 func loadDialogue(dial, stopPause):
 	#if dialogue_idx < dialogues.size():
-		print(dial)
+		#print(dial)
 		$"..".pause = true
 		$RichTextLabel.bbcode_text = dial #dialogues[dialogue_idx]
 		var dialLen = $RichTextLabel.text.length()

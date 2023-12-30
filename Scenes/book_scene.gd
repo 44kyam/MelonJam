@@ -1,7 +1,11 @@
 extends Node2D
 
+signal toMainCamera
+signal toBeadBox
+
 @onready var pages = $Pages.get_children()
 var idx = 0
+var exit = 0 # 0 = middle scene, 1 = beadBox scene
 
 func reset():
 	idx = 0
@@ -35,4 +39,8 @@ func _on_book_right_button_input_event(_viewport, event, _shape_idx):
 
 
 func _on_book_x_button_input_event(_viewport, event, _shape_idx):
-	pass # Replace with function body.
+	if $Buttons/BookXButton.hover and event.is_action_pressed("leftMouseClick"):
+		if exit == 0:
+			toMainCamera.emit()
+		else:
+			toBeadBox.emit()
