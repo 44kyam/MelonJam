@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6jnr2oauynra"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_q8nck"]
+[ext_resource type="Texture2D" uid="uid://xmnqs54c8hdu" path="res://Assets/Start Scene/start_buttons.png" id="2_og0m5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2ghy"]
+size = Vector2(282, 106)
+
+[node name="StartButton" instance=ExtResource("1_q8nck")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_m2ghy")
+
+[node name="Img" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_og0m5")
+region_enabled = true
+region_rect = Rect2(51, 24, 282, 105)
+
+[node name="ImgHover" type="Sprite2D" parent="." index="2"]
+visible = false
+texture = ExtResource("2_og0m5")
+region_enabled = true
+region_rect = Rect2(51, 174, 282, 105)

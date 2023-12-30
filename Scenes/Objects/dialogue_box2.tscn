@@ -30,3 +30,5 @@ theme = ExtResource("3_jgrls")
 bbcode_enabled = true
 text = "But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet. But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet.But one thing’s for sure - I know it’ll be the most beautiful and fascinating creature I’ll ever meet."
 scroll_following = true
+
+[node name="typing" type="AudioStreamPlayer2D" parent="."]

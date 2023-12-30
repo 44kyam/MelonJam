@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bilre1384vbj8"]
+[gd_scene load_steps=25 format=3 uid="uid://bilre1384vbj8"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_8o6wh"]
 [ext_resource type="Script" path="res://Scenes/middleScene.gd" id="2_4soy4"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://d1g8k5s1uyfpy" path="res://Scenes/Objects/books.tscn" id="9_mhnlx"]
 [ext_resource type="Texture2D" uid="uid://bek1yvvb6rbga" path="res://Assets/Placeholder/mainScreenBG.png" id="9_tjefy"]
 [ext_resource type="PackedScene" uid="uid://cscoucb83lag3" path="res://Scenes/Objects/dialogue_box2.tscn" id="10_fq7sk"]
+[ext_resource type="PackedScene" uid="uid://dcwlk7kdxw76u" path="res://Scenes/Objects/book_left_button.tscn" id="12_2l7il"]
+[ext_resource type="PackedScene" uid="uid://dmhu0a5b68u3" path="res://Scenes/Objects/book_right_button.tscn" id="13_se8pm"]
 
 [sub_resource type="Animation" id="Animation_cnwq3"]
 length = 0.001
@@ -290,6 +292,14 @@ position = Vector2(-1114, -235)
 position = Vector2(-2, -2)
 position_smoothing_enabled = false
 
+[node name="BookLeftButton" parent="Camera2D" index="2" instance=ExtResource("12_2l7il")]
+visible = false
+position = Vector2(-866, 440)
+
+[node name="BookRightButton" parent="Camera2D" index="3" instance=ExtResource("13_se8pm")]
+visible = false
+position = Vector2(869, 461)
+
 [node name="ColorRect" type="ColorRect" parent="." index="9"]
 visible = false
 offset_left = 645.0
@@ -313,6 +323,7 @@ scale = Vector2(2.27465, 2.2312)
 texture = ExtResource("9_tjefy")
 
 [node name="SolidColor" type="ColorRect" parent="." index="13"]
+visible = false
 z_index = 11
 offset_left = -1855.0
 offset_top = -622.0

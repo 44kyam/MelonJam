@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="MelonJam"
-run/main_scene="res://Scenes/level1.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Bgm="*res://Scenes/Objects/audio/bgm.tscn"
 
 [display]
 

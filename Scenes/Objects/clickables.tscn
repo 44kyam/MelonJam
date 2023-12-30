@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ykdwqrbe6c03"]
+[gd_scene load_steps=3 format=3 uid="uid://ykdwqrbe6c03"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/clickables.gd" id="1_vrxym"]
+[ext_resource type="AudioStream" uid="uid://cpjaaa7e8tr71" path="res://Assets/Audio/nc287003_hover.mp3" id="2_f1lwq"]
 
 [node name="Clickables" type="Area2D"]
 script = ExtResource("1_vrxym")
+
+[node name="HoverAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_f1lwq")

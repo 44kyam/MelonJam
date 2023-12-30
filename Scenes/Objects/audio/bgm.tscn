@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2lv0walaogxw"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/audio/bgm.gd" id="1_0mmfd"]
+[ext_resource type="AudioStream" uid="uid://dulm86betr7hq" path="res://Assets/Audio/BGM旅の行方.mp3" id="1_pdahb"]
+
+[node name="bgm" type="Node"]
+script = ExtResource("1_0mmfd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_pdahb")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

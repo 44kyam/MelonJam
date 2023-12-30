@@ -224,11 +224,9 @@ var answers = ["heeeh", "ifbeg", "afbfj jfbfa"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	runTutorial()
+	pass
+	#runTutorial()
 	#startGame()
-
-func runText():
-	thanksIdx = 100
 	
 
 var cameraPos = 1

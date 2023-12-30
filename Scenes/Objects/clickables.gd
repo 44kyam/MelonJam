@@ -9,6 +9,7 @@ func _mouse_enter():
 	hover = true
 	$Img.visible = false
 	$ImgHover.visible = true
+	$HoverAudio.play()
 	
 	match tag:
 		"slide":

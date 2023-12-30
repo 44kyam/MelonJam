@@ -1,8 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6bmhvgkii2m4"]
+[gd_scene load_steps=8 format=3 uid="uid://c6bmhvgkii2m4"]
 
 [ext_resource type="Texture2D" uid="uid://ck8c6dvjec77f" path="res://Assets/Start Scene/startscreen_wlogo.png" id="1_2cwib"]
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_s4ing"]
+[ext_resource type="PackedScene" uid="uid://b6jnr2oauynra" path="res://Scenes/Objects/start_button.tscn" id="2_dskgr"]
+[ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="4_2db4g"]
+
+[sub_resource type="Animation" id="Animation_gddte"]
+resource_name = "startGame"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button/StartButton:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startGame"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button/StartButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ClickAusio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gblar"]
+resource_name = "audio"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l0pkg"]
+_data = {
+"audio": SubResource("Animation_gblar"),
+"startGame": SubResource("Animation_gddte")
+}
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_s4ing")
 
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(11, 0)
@@ -10,3 +88,26 @@ texture = ExtResource("1_2cwib")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.69, 0.69)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l0pkg")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 5
+offset_left = -1022.0
+offset_top = -592.0
+offset_right = 1046.0
+offset_bottom = 592.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0)
+
+[node name="Button" type="Node2D" parent="."]
+
+[node name="StartButton" parent="Button" instance=ExtResource("2_dskgr")]
+position = Vector2(-576, 40)
+tag = "expand"
+
+[node name="ClickAusio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2db4g")

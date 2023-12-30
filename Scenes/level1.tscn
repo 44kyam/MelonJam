@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3wispxg52g6e"]
+[gd_scene load_steps=10 format=3 uid="uid://c3wispxg52g6e"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_04xr7"]
 [ext_resource type="Script" path="res://Scenes/level1.gd" id="2_dybqk"]
@@ -6,6 +6,53 @@
 [ext_resource type="PackedScene" uid="uid://bkaonbjywuo3p" path="res://Scenes/book_scene.tscn" id="4_ast7c"]
 [ext_resource type="PackedScene" uid="uid://0q3mulwalu7b" path="res://Scenes/BeadBoxScene.tscn" id="4_tc6bh"]
 [ext_resource type="PackedScene" uid="uid://bilre1384vbj8" path="res://Scenes/middleScene.tscn" id="5_8nlw3"]
+[ext_resource type="AudioStream" uid="uid://dulm86betr7hq" path="res://Assets/Audio/BGM旅の行方.mp3" id="7_m84pr"]
+
+[sub_resource type="Animation" id="Animation_b7ptv"]
+resource_name = "loadGame"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SolidColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.027451, 0.101961, 1), Color(0.117647, 0.027451, 0.101961, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MiddleScene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"runTutorial"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SolidColor:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hl3ed"]
+_data = {
+"loadGame": SubResource("Animation_b7ptv")
+}
 
 [node name="Level1" instance=ExtResource("1_04xr7")]
 script = ExtResource("2_dybqk")
@@ -29,9 +76,29 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(-31, 1329)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_hl3ed")
+}
+autoplay = "loadGame"
+
+[node name="SolidColor" type="ColorRect" parent="." index="7"]
+z_index = 11
+offset_left = -1855.0
+offset_top = -694.0
+offset_right = 1884.0
+offset_bottom = 681.0
+color = Color(0.117647, 0.027451, 0.101961, 1)
+
+[node name="clickSound" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("7_m84pr")
+volume_db = -1.30087
+autoplay = true
+
 [connection signal="toBeadBox" from="BookScene" to="." method="_on_book_scene_to_bead_box"]
 [connection signal="toMainCamera" from="BookScene" to="." method="_on_book_scene_to_main_camera"]
 [connection signal="toBeadBoxCamera" from="MiddleScene" to="." method="_on_middle_scene_to_bead_box_camera"]
 [connection signal="toBookCamera" from="MiddleScene" to="." method="_on_middle_scene_to_book_camera"]
 [connection signal="toBookCamera" from="BeadBoxScene" to="." method="_on_bead_box_scene_to_book_camera"]
 [connection signal="toMainCamera" from="BeadBoxScene" to="." method="_on_bead_box_scene_to_main_camera"]
+[connection signal="finished" from="clickSound" to="." method="_on_bgm_finished"]

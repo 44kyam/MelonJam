@@ -155,3 +155,7 @@ func unPauseForUi():
 			child.process_mode = PROCESS_MODE_INHERIT
 	
 
+
+
+func _on_bgm_finished():
+	$bgm.play()

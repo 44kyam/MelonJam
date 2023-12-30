@@ -32,10 +32,14 @@ func loadDialogue(dial, stopPause):
 		var time = typeChars * 0.02
 		var tween = create_tween()
 		tween.tween_property($RichTextLabel, "visible_characters", dialLen, time)
-		await tween.finished
+		await tween.finished.connect(stopAudio)
+		
 		finish = true
 		
 		if stopPause:
 			$"..".pause = false
 	#else:
 		#queue_free()
+		
+func stopAudio():
+	$typing.stop()
