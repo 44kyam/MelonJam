@@ -243,8 +243,10 @@ func _input(event):
 			match cameraPos:
 				0:
 					$AnimationPlayer.play("leftToMid")
+					$Camera2D/LButt.visible = true
 				1:
 					$AnimationPlayer.play("cameraToRight")
+					$Camera2D/rbutt.visible = false
 			
 			cameraPos += 1
 		
@@ -253,8 +255,10 @@ func _input(event):
 			match cameraPos:
 				1:
 					$AnimationPlayer.play("cameraToLeft")
+					$Camera2D/LButt.visible = false
 				2: 
 					$AnimationPlayer.play("rightToMid")
+					$Camera2D/rbutt.visible = true
 			
 			cameraPos -= 1
 					
@@ -278,6 +282,7 @@ func _input(event):
 
 # trigger to start game
 func startGame():
+	$TutorialPointer.queue_free()
 	inTutorial = false
 	$Sprites/Zeke.visible = true
 	dialRun()
@@ -323,6 +328,7 @@ func runTutorial():
 	
 			2: 
 				pause = false
+				$TutorialPointer.visible = true
 				runTutorialSections()
 		
 		# if box is not null
@@ -365,6 +371,13 @@ func dialRun():
 	else:
 		db_idx = 2
 		pause = false
+	
+	if pause:
+		$Camera2D/rbutt.visible = false
+		$Camera2D/LButt.visible = false
+	else:
+		$Camera2D/rbutt.visible = true
+		$Camera2D/LButt.visible = true
 
 func TYDialRun():
 	yeetBox()
@@ -421,3 +434,32 @@ func yeetBox():
 	if box:
 		box.queue_free()
 		box = null
+
+
+func _on_rbutt_input_event(_viewport, event, _shape_idx):
+	if !pause and $Camera2D/rbutt.hover and event.is_action_pressed("leftMouseClick") and cameraPos < 2:
+			match cameraPos:
+				0:
+					$AnimationPlayer.play("leftToMid")
+					$Camera2D/LButt.visible = true
+				1:
+					$AnimationPlayer.play("cameraToRight")
+					$Camera2D/rbutt.visible = false
+			
+			cameraPos += 1
+		
+
+
+func _on_l_butt_input_event(_viewport, event, _shape_idx):
+	if !pause and $Camera2D/LButt.hover and event.is_action_pressed("leftMouseClick") and cameraPos > 0:
+			print(cameraPos)
+			match cameraPos:
+				1:
+					$AnimationPlayer.play("cameraToLeft")
+					$Camera2D/LButt.visible = false
+				2: 
+					$AnimationPlayer.play("rightToMid")
+					$Camera2D/rbutt.visible = true
+					
+			
+			cameraPos -= 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bilre1384vbj8"]
+[gd_scene load_steps=30 format=3 uid="uid://bilre1384vbj8"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_8o6wh"]
 [ext_resource type="Script" path="res://Scenes/middleScene.gd" id="2_4soy4"]
@@ -12,10 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://cy026p46xtkjq" path="res://Scenes/Objects/drawer.tscn" id="8_37wpy"]
 [ext_resource type="PackedScene" uid="uid://c3xgqtty6lqdb" path="res://Scenes/Objects/drawer_door.tscn" id="9_eb63o"]
 [ext_resource type="PackedScene" uid="uid://d1g8k5s1uyfpy" path="res://Scenes/Objects/books.tscn" id="9_mhnlx"]
-[ext_resource type="Texture2D" uid="uid://bek1yvvb6rbga" path="res://Assets/Placeholder/mainScreenBG.png" id="9_tjefy"]
 [ext_resource type="PackedScene" uid="uid://cscoucb83lag3" path="res://Scenes/Objects/dialogue_box2.tscn" id="10_fq7sk"]
-[ext_resource type="PackedScene" uid="uid://dcwlk7kdxw76u" path="res://Scenes/Objects/book_left_button.tscn" id="12_2l7il"]
-[ext_resource type="PackedScene" uid="uid://dmhu0a5b68u3" path="res://Scenes/Objects/book_right_button.tscn" id="13_se8pm"]
+[ext_resource type="PackedScene" uid="uid://cvhq35qvfll58" path="res://Scenes/Objects/rbutt.tscn" id="12_mbxpq"]
+[ext_resource type="PackedScene" uid="uid://dmqgtb1logkd6" path="res://Scenes/Objects/l_butt.tscn" id="13_fkjeg"]
+[ext_resource type="Texture2D" uid="uid://7m737fnh0b7v" path="res://Assets/arrow.png" id="16_ut2pk"]
+[ext_resource type="FontFile" uid="uid://dprhbmsy2ud0b" path="res://Assets/Font/Itim-Regular.ttf" id="17_qfh2p"]
 
 [sub_resource type="Animation" id="Animation_cnwq3"]
 length = 0.001
@@ -219,6 +220,11 @@ tracks/1/keys = {
 "values": [Vector2(550, 2), Vector2(-2, -2)]
 }
 
+[sub_resource type="Animation" id="Animation_tqkqe"]
+resource_name = "triangle"
+length = 0.6
+loop_mode = 1
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mvnse"]
 _data = {
 "RESET": SubResource("Animation_cnwq3"),
@@ -227,7 +233,38 @@ _data = {
 "ending": SubResource("Animation_a54xs"),
 "leftToMid": SubResource("Animation_8c0xv"),
 "next_transition": SubResource("Animation_fo343"),
-"rightToMid": SubResource("Animation_xkvj1")
+"rightToMid": SubResource("Animation_xkvj1"),
+"triangle": SubResource("Animation_tqkqe")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_73o6t"]
+line_spacing = 5.0
+font = ExtResource("17_qfh2p")
+font_size = 120
+outline_size = 25
+outline_color = Color(0.564706, 0.305882, 0.545098, 1)
+shadow_color = Color(0.854902, 0, 0.756863, 0)
+
+[sub_resource type="Animation" id="Animation_tndax"]
+resource_name = "tutorial"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialPointer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(967, 237), Vector2(967, 200), Vector2(967, 237)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4mxb"]
+_data = {
+"tutorial": SubResource("Animation_tndax")
 }
 
 [node name="MiddleScene" instance=ExtResource("1_8o6wh")]
@@ -292,13 +329,11 @@ position = Vector2(-1114, -235)
 position = Vector2(-2, -2)
 position_smoothing_enabled = false
 
-[node name="BookLeftButton" parent="Camera2D" index="2" instance=ExtResource("12_2l7il")]
-visible = false
-position = Vector2(-866, 440)
+[node name="rbutt" parent="Camera2D" index="2" instance=ExtResource("12_mbxpq")]
+position = Vector2(869, 460)
 
-[node name="BookRightButton" parent="Camera2D" index="3" instance=ExtResource("13_se8pm")]
-visible = false
-position = Vector2(869, 461)
+[node name="LButt" parent="Camera2D" index="3" instance=ExtResource("13_fkjeg")]
+position = Vector2(-862, 441)
 
 [node name="ColorRect" type="ColorRect" parent="." index="9"]
 visible = false
@@ -316,11 +351,23 @@ position = Vector2(12, 111)
 visible = false
 position = Vector2(19, -312)
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="12"]
+[node name="TutorialPointer" type="Node2D" parent="." index="12"]
 visible = false
-position = Vector2(-6, 3)
-scale = Vector2(2.27465, 2.2312)
-texture = ExtResource("9_tjefy")
+position = Vector2(967, 237)
+scale = Vector2(0.596154, 0.596154)
+
+[node name="triangle" type="Sprite2D" parent="TutorialPointer" index="0"]
+position = Vector2(216.387, 4.54482)
+texture = ExtResource("16_ut2pk")
+
+[node name="Label" type="Label" parent="TutorialPointer" index="1"]
+offset_left = -107.355
+offset_top = -224.774
+offset_right = 579.645
+offset_bottom = -80.7742
+text = "Click Drawer!"
+label_settings = SubResource("LabelSettings_73o6t")
+horizontal_alignment = 1
 
 [node name="SolidColor" type="ColorRect" parent="." index="13"]
 visible = false
@@ -331,7 +378,15 @@ offset_right = 1884.0
 offset_bottom = 633.0
 color = Color(0.117647, 0.027451, 0.101961, 0)
 
+[node name="AP2" type="AnimationPlayer" parent="." index="14"]
+libraries = {
+"": SubResource("AnimationLibrary_j4mxb")
+}
+autoplay = "tutorial"
+
 [connection signal="input_event" from="Interactables/Drawer" to="." method="_on_drawer_input_event"]
 [connection signal="input_event" from="Interactables/DrawerDoor" to="." method="_on_drawer_door_input_event"]
 [connection signal="input_event" from="Interactables/Books" to="." method="_on_books_input_event"]
+[connection signal="input_event" from="Camera2D/rbutt" to="." method="_on_rbutt_input_event"]
+[connection signal="input_event" from="Camera2D/LButt" to="." method="_on_l_butt_input_event"]
 [connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
