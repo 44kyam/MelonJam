@@ -73,11 +73,13 @@ var dialogues = [
 	["Please say you can help. I’m out of options.", 0], 
 	["O-of course I can help!", 1], 
 	["Uhm, I’ll try my best, I mean.", 1], 
+	["A simple charm to get a lot of money back, right?", 1], 	
 	["I’ll have to look through my reference books but there should be something for your situation.", 1], 
 	["Just give me a moment and I’ll get you a charm all set up!", 1], 
 	[null, 2],
 	
 	# level 1 - ray
+	["Oh! Hello there, welcome, welcome!", 1],
 	["Greetings. Quite the happy customer you’ve just entertained, I see.", 0],
 	["Oh! Hello, welcome!", 1],
 	["Nice to meet you. A little bird told me that a charm maker is in town.", 0],
@@ -105,7 +107,7 @@ var dialogues = [
 	["Sometimes, weirdos make good inspiration, too.", 0],
 	["Ok, got it! Please give me a moment.", 1],
 	["No worries. Take your time.", 0],
-	["(The client’s desired effect is to attract oddities and repel normality.)", 1],
+	["(The client’s desired effect is to repel normality and attract oddities.)", 1],
 	["(In this case, an asymmetrical charm would bring out the best effect.)", 1],
 	[null, 2],
 	
@@ -145,7 +147,9 @@ var dialogues = [
 	["Can't hurt to have that, too, right?", 0],
 	["Of course. Anything else?", 1], 
 	["Can you please hurry, I'm afraid they'll catch up to me soon.", 0],
-	["(Can't be helped. This is my job.)", 2],  
+	["(What a greedy client. Definitely calls for an asymmetrical charm.)", 1],  
+	["(Can't be helped. This is my job.)", 1],  
+	["(Something to repel bad futures and to stay hidden.)", 1],  
 	[null, 2],
 	
 	#ending
@@ -219,7 +223,7 @@ var thanks = [
 var idx = 0
 var thanksIdx = 0
 
-var answers = ["heeeh", "ifbeg", "afbfj jfbfa"]
+var answers = ["heeeh hebeh eeeee", "ifbeg gebfi", "afbfj jfbfa ifbfj jfbfi afgfj jfgfa ifgfj jfgfi"]
 
 
 # Called when the node enters the scene tree for the first time.
