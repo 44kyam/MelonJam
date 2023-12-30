@@ -223,7 +223,7 @@ var thanks = [
 var idx = 0
 var thanksIdx = 0
 
-var answers = ["heeeh hebeh eeeee", "ifbeg gebfi", "afbfj jfbfa ifbfj jfbfi afgfj jfgfa ifgfj jfgfi"]
+var answers = ["heeeh hebeh eeeee", "ifbeg gebfi", "afbfj jfbfa ifbfj jfbfi afgfj jfgfa ifgfj jfgfi bfgfj jfgfb bfgfj jfgfb"]
 
 
 # Called when the node enters the scene tree for the first time.
