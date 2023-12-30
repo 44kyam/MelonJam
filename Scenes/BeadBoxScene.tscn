@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://0q3mulwalu7b"]
+[gd_scene load_steps=28 format=3 uid="uid://0q3mulwalu7b"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_o2qp4"]
 [ext_resource type="Script" path="res://Scenes/BeadBoxScene.gd" id="2_4q65q"]
@@ -22,6 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://dvk66aco686dc" path="res://Scenes/Objects/beads/bead_i.tscn" id="18_l8ett"]
 [ext_resource type="PackedScene" uid="uid://blfml0f3ktfoa" path="res://Scenes/Objects/beads/bead_j.tscn" id="19_0sws8"]
 [ext_resource type="PackedScene" uid="uid://cscoucb83lag3" path="res://Scenes/Objects/dialogue_box2.tscn" id="21_y7q7e"]
+[ext_resource type="AudioStream" uid="uid://ib4t3cyxie1l" path="res://Assets/Audio/nc285175_wrong.wav" id="23_jd5t3"]
+[ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="24_eeysl"]
+[ext_resource type="AudioStream" uid="uid://bng063im7i4m5" path="res://Assets/Audio/nc298524_correct.wav" id="25_2jr28"]
+[ext_resource type="AudioStream" uid="uid://dcwqbsa2vaao5" path="res://Assets/Audio/nc290319_reset.wav" id="26_p6yyo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q0vm4"]
 radius = 88.0057
@@ -157,6 +161,20 @@ position = Vector2(-924, -34)
 [node name="DialogueBox2" parent="." index="8" instance=ExtResource("21_y7q7e")]
 visible = false
 position = Vector2(-183, 127)
+
+[node name="Audio" type="Node2D" parent="." index="9"]
+
+[node name="Wrong" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource("23_jd5t3")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="Audio" index="1"]
+stream = ExtResource("24_eeysl")
+
+[node name="Correct" type="AudioStreamPlayer2D" parent="Audio" index="2"]
+stream = ExtResource("25_2jr28")
+
+[node name="Reset" type="AudioStreamPlayer2D" parent="Audio" index="3"]
+stream = ExtResource("26_p6yyo")
 
 [connection signal="input_event" from="UI/ValidateButton" to="." method="_on_validate_button_input_event"]
 [connection signal="input_event" from="UI/ResetButton" to="." method="_on_reset_button_input_event"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvhq35qvfll58"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_bbd6r"]
+[ext_resource type="Texture2D" uid="uid://dq4gbfddiktbu" path="res://Assets/camera_buttons.png" id="2_gsgc0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlltw"]
+size = Vector2(125, 123)
+
+[node name="rbutt" instance=ExtResource("1_bbd6r")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_mlltw")
+
+[node name="Img" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_gsgc0")
+region_enabled = true
+region_rect = Rect2(246, 63, 123, 123)
+
+[node name="ImgHover" type="Sprite2D" parent="." index="3"]
+visible = false
+texture = ExtResource("2_gsgc0")
+region_enabled = true
+region_rect = Rect2(246, 252, 123, 123)

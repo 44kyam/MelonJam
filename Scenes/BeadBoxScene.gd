@@ -74,6 +74,8 @@ func snap_bead_to_area(area,idx,fill):
 # reset button click function
 func _on_reset_button_input_event(_viewport, event, _shape_idx):
 	if $UI/ResetButton.hover and event.is_action_pressed("leftMouseClick"):
+		$Audio/Reset.play()
+		
 		resetAll()
 
 # reset the board
@@ -103,21 +105,29 @@ func validate():
 	
 	if playerAnswer in answerArr:
 		#print("correct")
+		$Audio/Correct.play()
 		if inTutorial:
 			runTutorial()
 		else:
 			toMainCamera.emit("correct")
+	else:
+		$Audio/Wrong.play()
 
 # book button click
 func _on_book_button_input_event(_viewport, event, _shape_idx):
 	if $UI/BookButton.hover and event.is_action_pressed("leftMouseClick"):
+		$Audio/Click.play()
 		toBookCamera.emit(1)
 	
 
 # exit button click
 func _on_exit_button_input_event(_viewport, event, _shape_idx):
-	if !inTutorial and $UI/ExitButton.hover and event.is_action_pressed("leftMouseClick"):
-		toMainCamera.emit("")
+	if $UI/ExitButton.hover and event.is_action_pressed("leftMouseClick"):
+		if !inTutorial:
+			$Audio/Click.play()
+			toMainCamera.emit("")
+		else:
+			$Audio/Wrong.play()
 
 # play tutorial
 
