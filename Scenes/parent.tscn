@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://gacxqlgbd4y1"]
+[gd_scene load_steps=10 format=3 uid="uid://gacxqlgbd4y1"]
 
 [ext_resource type="PackedScene" uid="uid://cpf43x0vx56tv" path="res://Scenes/Objects/help_button.tscn" id="2_134an"]
-[ext_resource type="PackedScene" uid="uid://yoxtqame1g32" path="res://Scenes/Objects/option_button.tscn" id="3_h2mmo"]
 [ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="3_xp4wf"]
 [ext_resource type="Script" path="res://Scenes/UI.gd" id="4_a28ap"]
 [ext_resource type="Texture2D" uid="uid://bxhxjerocqya8" path="res://Assets/Help/p1.png" id="4_wm24s"]
@@ -20,11 +19,7 @@ position_smoothing_enabled = true
 
 [node name="HelpButton" parent="Camera2D" instance=ExtResource("2_134an")]
 unique_name_in_owner = true
-position = Vector2(678, -457)
-
-[node name="OptionButton" parent="Camera2D" instance=ExtResource("3_h2mmo")]
-unique_name_in_owner = true
-position = Vector2(836, -457)
+position = Vector2(860, -447)
 
 [node name="UI" type="Node2D" parent="."]
 z_index = 10

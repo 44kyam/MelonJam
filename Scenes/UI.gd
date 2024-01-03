@@ -55,7 +55,6 @@ func helpButtonOpen(tutorial):
 func uiButtonOpen():
 	position = $"../Camera2D".position
 	%HelpButton.visible = false
-	%OptionButton.visible = false
 	UIs = get_children()
 	for ui in UIs:
 		ui.visible = false
@@ -65,7 +64,6 @@ func uiButtonOpen():
 
 func uiButtonClose():
 	%HelpButton.visible = true
-	%OptionButton.visible = true
 	for ui in UIs:
 		ui.visible = true
 		
