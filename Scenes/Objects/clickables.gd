@@ -16,6 +16,7 @@ func _mouse_enter():
 	elif tag == "regi":
 		pass
 	else:
+		$HoverAudio.play()
 		$Img.visible = false
 		$ImgHover.visible = true
 		
@@ -23,7 +24,8 @@ func _mouse_enter():
 			"slide":
 				position.x -= 50
 			"expand":
-				scale = Vector2(1.05, 1.05)
+				scale.x += 0.05
+				scale.y += 0.05
 	
 func _mouse_exit():
 	hover = false
@@ -36,4 +38,5 @@ func _mouse_exit():
 			"slide":
 				position.x += 50
 			"expand":
-				scale = Vector2(1, 1)
+				scale.x -= 0.05
+				scale.y -= 0.05

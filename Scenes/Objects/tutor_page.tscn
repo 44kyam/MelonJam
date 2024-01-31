@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdo6ucqpi37uo"]
+
+[ext_resource type="Script" path="res://Tutor_Page.gd" id="1_f38cs"]
+[ext_resource type="Texture2D" uid="uid://cg0mi3bxrc65o" path="res://Assets/tutorial.png" id="2_dnqlx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xttn3"]
+size = Vector2(1471, 1044)
+
+[node name="Tutor_Page" type="Area2D"]
+script = ExtResource("1_f38cs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14.5, 75)
+shape = SubResource("RectangleShape2D_xttn3")
+
+[node name="image2" type="Sprite2D" parent="."]
+self_modulate = Color(0.764706, 0.729412, 0.792157, 1)
+texture = ExtResource("2_dnqlx")
+
+[node name="image" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_dnqlx")

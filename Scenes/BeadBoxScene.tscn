@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://0q3mulwalu7b"]
+[gd_scene load_steps=30 format=3 uid="uid://0q3mulwalu7b"]
 
 [ext_resource type="PackedScene" uid="uid://gacxqlgbd4y1" path="res://Scenes/parent.tscn" id="1_o2qp4"]
 [ext_resource type="Script" path="res://Scenes/BeadBoxScene.gd" id="2_4q65q"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://blfml0f3ktfoa" path="res://Scenes/Objects/beads/bead_j.tscn" id="19_0sws8"]
 [ext_resource type="PackedScene" uid="uid://cscoucb83lag3" path="res://Scenes/Objects/dialogue_box2.tscn" id="21_y7q7e"]
 [ext_resource type="AudioStream" uid="uid://ib4t3cyxie1l" path="res://Assets/Audio/nc285175_wrong.wav" id="23_jd5t3"]
+[ext_resource type="PackedScene" uid="uid://bdo6ucqpi37uo" path="res://Scenes/Objects/tutor_page.tscn" id="23_uqwig"]
 [ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="24_eeysl"]
 [ext_resource type="AudioStream" uid="uid://bng063im7i4m5" path="res://Assets/Audio/nc298524_correct.wav" id="25_2jr28"]
 [ext_resource type="AudioStream" uid="uid://dcwqbsa2vaao5" path="res://Assets/Audio/nc290319_reset.wav" id="26_p6yyo"]
@@ -163,7 +164,21 @@ position = Vector2(-924, -34)
 visible = false
 position = Vector2(-183, 127)
 
-[node name="Audio" type="Node2D" parent="." index="9"]
+[node name="SolidColor" type="ColorRect" parent="." index="9"]
+visible = false
+offset_left = -1778.0
+offset_top = -671.0
+offset_right = 1961.0
+offset_bottom = 704.0
+mouse_force_pass_scroll_events = false
+color = Color(0.117647, 0.027451, 0.101961, 0)
+
+[node name="Tutor_Page" parent="." index="10" instance=ExtResource("23_uqwig")]
+visible = false
+z_index = 20
+position = Vector2(100, 850)
+
+[node name="Audio" type="Node2D" parent="." index="11"]
 
 [node name="Wrong" type="AudioStreamPlayer2D" parent="Audio" index="0"]
 stream = ExtResource("23_jd5t3")
@@ -184,3 +199,4 @@ stream = ExtResource("27_rr5yg")
 [connection signal="input_event" from="UI/ResetButton" to="." method="_on_reset_button_input_event"]
 [connection signal="input_event" from="UI/BookButton" to="." method="_on_book_button_input_event"]
 [connection signal="input_event" from="UI/ExitButton" to="." method="_on_exit_button_input_event"]
+[connection signal="input_event" from="Tutor_Page" to="." method="_on_tutor_page_input_event"]

@@ -2,6 +2,9 @@ extends Node2D
 
 signal toBeadBoxCamera
 signal toBookCamera
+signal addToAllLog
+signal clearAllLog
+signal nextClient
 
 var nightImg = preload("res://Assets/Main Scene/mainscene_bottom_dark.png")
 
@@ -294,7 +297,8 @@ func _input(event):
 func startGame():
 	$TutorialPointer.queue_free()
 	inTutorial = false
-	$Sprites/Zeke.visible = true
+	clearAllLog.emit()
+	
 	dialRun()
 	
 
@@ -383,7 +387,11 @@ func dialRun():
 		db_idx = 2
 		pause = false
 	
-	if pause:
+	cameraButton(pause)
+
+# camera movement button visibility
+func cameraButton(off):
+	if off:
 		$Camera2D/rbutt.visible = false
 		$Camera2D/LButt.visible = false
 	else:
@@ -411,6 +419,7 @@ func TYDialRun():
 		inThanks = false
 		thanksIdx += 1
 		level += 1
+		$AnimationPlayer.stop(true)
 		$AnimationPlayer.play("next_transition")
 	
 		
@@ -422,9 +431,12 @@ func runNext():
 		1: 
 			client = $Sprites/Ray
 			client.visible = true
+			nextClient.emit("The Writer")
+			
 		2:
 			client = $Sprites/Eld
 			client.visible = true
+			nextClient.emit("The Runaway")
 			
 	# Enter ending scene
 	if thanksIdx >= len(thanks):
@@ -443,6 +455,7 @@ func toEnding():
 
 func yeetBox():
 	if box:
+		addToAllLog.emit(box.getText(), box.num)
 		box.queue_free()
 		box = null
 

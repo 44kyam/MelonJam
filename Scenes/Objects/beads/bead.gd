@@ -4,12 +4,16 @@ var hover: bool = false
 var click: bool = false
 var notClickable: bool = false
 var ogPosition
+var ogSize
+var hoverSize
 @export var letter: String
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ogPosition = position
+	ogSize = scale
+	hoverSize = Vector2(ogSize.x+0.07, ogSize.y+0.07)
 
 func _mouse_enter():
 	if !click:
@@ -35,14 +39,14 @@ func _input(event):
 
 func beadDown():
 	$sfx.play()
-	scale = Vector2(0.5,0.5)
+	scale = hoverSize if hover else ogSize
 	z_index = 1
 	position.y += 30
 	click = false
 
 func beadUp():
 	$sfx.play()
-	scale = Vector2(0.6,0.6)
+	scale = Vector2(0.65,0.65)
 	z_index = 5
 	position.y -= 30
 	click = true

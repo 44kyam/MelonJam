@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://gacxqlgbd4y1"]
+[gd_scene load_steps=12 format=3 uid="uid://gacxqlgbd4y1"]
 
 [ext_resource type="PackedScene" uid="uid://cpf43x0vx56tv" path="res://Scenes/Objects/help_button.tscn" id="2_134an"]
+[ext_resource type="PackedScene" uid="uid://qm10f2r0sb2b" path="res://Scenes/Objects/history_log.tscn" id="2_c1vso"]
+[ext_resource type="PackedScene" uid="uid://281kl5igb5q6" path="res://Scenes/Objects/history_button.tscn" id="2_h8rp3"]
 [ext_resource type="AudioStream" uid="uid://baqgwn6c4otof" path="res://Assets/Audio/nc305653_click.wav" id="3_xp4wf"]
 [ext_resource type="Script" path="res://Scenes/UI.gd" id="4_a28ap"]
 [ext_resource type="Texture2D" uid="uid://bxhxjerocqya8" path="res://Assets/Help/p1.png" id="4_wm24s"]
@@ -19,11 +21,23 @@ position_smoothing_enabled = true
 
 [node name="HelpButton" parent="Camera2D" instance=ExtResource("2_134an")]
 unique_name_in_owner = true
+position = Vector2(710, -447)
+
+[node name="HistoryButton" parent="Camera2D" instance=ExtResource("2_h8rp3")]
+unique_name_in_owner = true
 position = Vector2(860, -447)
 
 [node name="UI" type="Node2D" parent="."]
 z_index = 10
 script = ExtResource("4_a28ap")
+
+[node name="HistoryLog" parent="UI" instance=ExtResource("2_c1vso")]
+unique_name_in_owner = true
+visible = false
+offset_left = -648.0
+offset_top = -356.0
+offset_right = -648.0
+offset_bottom = -356.0
 
 [node name="HelpPages" type="Node2D" parent="UI"]
 visible = false
@@ -57,3 +71,4 @@ stream = ExtResource("3_xp4wf")
 stream = ExtResource("9_6iokk")
 
 [connection signal="input_event" from="Camera2D/HelpButton" to="UI" method="_on_help_button_input_event"]
+[connection signal="input_event" from="Camera2D/HistoryButton" to="UI" method="_on_history_button_input_event"]

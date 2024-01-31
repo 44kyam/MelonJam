@@ -103,7 +103,11 @@ color = Color(0.117647, 0.027451, 0.101961, 0.8)
 
 [connection signal="toBeadBox" from="BookScene" to="." method="_on_book_scene_to_bead_box"]
 [connection signal="toMainCamera" from="BookScene" to="." method="_on_book_scene_to_main_camera"]
+[connection signal="addToAllLog" from="MiddleScene" to="." method="addToAllLog"]
+[connection signal="clearAllLog" from="MiddleScene" to="." method="clearAllLog"]
+[connection signal="nextClient" from="MiddleScene" to="." method="nextClient"]
 [connection signal="toBeadBoxCamera" from="MiddleScene" to="." method="_on_middle_scene_to_bead_box_camera"]
 [connection signal="toBookCamera" from="MiddleScene" to="." method="_on_middle_scene_to_book_camera"]
+[connection signal="addToAllLog" from="BeadBoxScene" to="." method="addToAllLog"]
 [connection signal="toBookCamera" from="BeadBoxScene" to="." method="_on_bead_box_scene_to_book_camera"]
 [connection signal="toMainCamera" from="BeadBoxScene" to="." method="_on_bead_box_scene_to_main_camera"]

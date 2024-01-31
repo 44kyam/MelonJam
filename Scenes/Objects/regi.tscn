@@ -42,6 +42,7 @@ tag = "regi"
 
 [node name="HoverAudio" parent="." index="0"]
 stream = ExtResource("2_pyp5v")
+volume_db = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_aniia")

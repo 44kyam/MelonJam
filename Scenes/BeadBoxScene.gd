@@ -2,6 +2,7 @@ extends Node2D
 
 signal toMainCamera
 signal toBookCamera
+signal addToAllLog
 
 var inTutorial = false
 var pause = false
@@ -50,7 +51,7 @@ func new_bead_click(bead):
 # trigger when area is click
 func snap_bead_to_area(area,idx,fill):
 	if !pause:
-		var same = ansArr[idx] and beadClick and ansArr[idx].name == currentBead.name
+		var same = ansArr[idx] and ansArr[idx].letter == currentBead.letter
 		
 		if same:
 			$Audio/Bead.play()
@@ -71,6 +72,7 @@ func snap_bead_to_area(area,idx,fill):
 			dup.position = area.position
 			dup.notClickable = true
 			dup.scale = currentBead.scale
+			dup.letter = currentBead.letter
 			ansArr[idx] = dup
 			area.fill = true
 	
@@ -114,6 +116,7 @@ func validate():
 		$Audio/Correct.play()
 		if inTutorial:
 			runTutorial()
+			deleteTutorButton()
 		else:
 			toMainCamera.emit("correct")
 	else:
@@ -173,7 +176,6 @@ func runTutorial():
 	inTutorial = true
 	pause = true
 	
-	
 	if tutorialIdx < len(tutorial):
 		yeetBox()
 		
@@ -202,16 +204,17 @@ func runTutorial():
 		
 		tutorialIdx += 1
 
-		
-		
-		
+func deleteTutorButton():
+	$Tutor_Page.queue_free()
 
 func yeetBox():
 	if box:
 		box.queue_free()
+		addToAllLog.emit(box.getText(),2)
 		box = null
 	
 
 func _input(ev):
 	if inTutorial and ev.is_action_pressed("leftMouseClick") and box != null and box.hover:
 		runTutorial()
+		

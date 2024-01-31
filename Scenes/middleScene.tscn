@@ -37,7 +37,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false]
 }
 tracks/1/type = "value"
@@ -65,7 +65,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false]
 }
 tracks/1/type = "value"
@@ -87,26 +87,26 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SolidColor:visible")
+tracks/0/path = NodePath("SolidColor:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SolidColor:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.117647, 0.027451, 0.101961, 0), Color(0.0666667, 0.0117647, 0.054902, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SolidColor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -115,7 +115,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -135,7 +135,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false]
 }
 tracks/1/type = "value"
@@ -157,26 +157,26 @@ length = 1.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SolidColor:visible")
+tracks/0/path = NodePath("SolidColor:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0, 0.3, 1.4, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.027451, 0.101961, 0), Color(0.0666667, 0.0117647, 0.054902, 1), Color(0.0666667, 0.0117647, 0.054902, 1), Color(0.0666667, 0.0117647, 0.054902, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SolidColor:color")
+tracks/1/path = NodePath("SolidColor:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.2, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.117647, 0.027451, 0.101961, 0), Color(0.0666667, 0.0117647, 0.054902, 1), Color(0.0666667, 0.0117647, 0.054902, 1), Color(0.0666667, 0.0117647, 0.054902, 0)]
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -185,7 +185,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.4, 1.2),
+"times": PackedFloat32Array(0.4, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -220,7 +220,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false]
 }
 tracks/1/type = "value"
@@ -344,14 +344,17 @@ tag = "slide"
 [node name="Books" parent="Interactables" index="3" instance=ExtResource("9_mhnlx")]
 position = Vector2(-1114, -235)
 
+[node name="InteractiveBell" parent="Interactables" index="4" instance=ExtResource("20_tskm4")]
+position = Vector2(-655, 380)
+
 [node name="Camera2D" parent="." index="7"]
 position = Vector2(-2, -2)
 position_smoothing_enabled = false
 
-[node name="rbutt" parent="Camera2D" index="2" instance=ExtResource("12_mbxpq")]
+[node name="rbutt" parent="Camera2D" index="1" instance=ExtResource("12_mbxpq")]
 position = Vector2(869, 460)
 
-[node name="LButt" parent="Camera2D" index="3" instance=ExtResource("13_fkjeg")]
+[node name="LButt" parent="Camera2D" index="2" instance=ExtResource("13_fkjeg")]
 position = Vector2(-862, 441)
 
 [node name="walk" type="AudioStreamPlayer2D" parent="UI/Audio" index="1"]
@@ -394,12 +397,11 @@ horizontal_alignment = 1
 
 [node name="SolidColor" type="ColorRect" parent="." index="13"]
 visible = false
-z_index = 11
 offset_left = -1855.0
 offset_top = -622.0
 offset_right = 1884.0
 offset_bottom = 633.0
-color = Color(0.0666667, 0.0117647, 0.054902, 0)
+color = Color(0.117647, 0.027451, 0.101961, 0)
 
 [node name="AP2" type="AnimationPlayer" parent="." index="14"]
 libraries = {
@@ -411,9 +413,6 @@ autoplay = "tutorial"
 
 [node name="click" type="AudioStreamPlayer2D" parent="Audio" index="0"]
 stream = ExtResource("18_en4pc")
-
-[node name="InteractiveBell" parent="." index="16" instance=ExtResource("20_tskm4")]
-position = Vector2(-655, 380)
 
 [connection signal="input_event" from="Interactables/Drawer" to="." method="_on_drawer_input_event"]
 [connection signal="input_event" from="Interactables/DrawerDoor" to="." method="_on_drawer_door_input_event"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://281kl5igb5q6"]
+
+[ext_resource type="PackedScene" uid="uid://ykdwqrbe6c03" path="res://Scenes/Objects/clickables.tscn" id="1_q17d7"]
+[ext_resource type="Texture2D" uid="uid://cpbxayfcdb217" path="res://Assets/history button.png" id="2_midn5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdjpe"]
+size = Vector2(123, 123)
+
+[node name="HistoryButton" instance=ExtResource("1_q17d7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_mdjpe")
+
+[node name="Img" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_midn5")
+region_enabled = true
+region_rect = Rect2(112, 189, 123, 123)
+
+[node name="ImgHover" type="Sprite2D" parent="." index="3"]
+visible = false
+texture = ExtResource("2_midn5")
+region_enabled = true
+region_rect = Rect2(252, 189, 123, 123)

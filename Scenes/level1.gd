@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var bgm = get_node("/root/Bgm")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MiddleScene/Camera2D.make_current()
@@ -8,7 +10,7 @@ func _ready():
 func _on_middle_scene_to_bead_box_camera(ans, tutorial):
 	$MiddleScene.process_mode = PROCESS_MODE_DISABLED
 	$BeadBoxScene.resetAll()
-	$Audio/drawer.play()
+	bgm.playDrawerAudio()
 	if tutorial:
 		$BeadBoxScene.answer = "ieaei"
 	else:
@@ -30,16 +32,20 @@ func _on_middle_scene_to_bead_box_camera(ans, tutorial):
 
 # to middle scene
 func _on_bead_box_scene_to_main_camera(note):
-	#print("hi")
 	$MiddleScene.process_mode = PROCESS_MODE_INHERIT
 	
 	if ["correct", "start"].has(note):
 		$MiddleScene/Camera2D.position = Vector2(-2,2)
 		$MiddleScene.cameraPos = 1
+		$MiddleScene.cameraButton(true)
 	
 	$MiddleScene/Camera2D.make_current()
 	$BeadBoxScene.position.y = 0
 	$BeadBoxScene.position.x = $MiddleScene/Camera2D.position.x
+	
+	if note == "start":
+		$MiddleScene/Sprites/Zeke.visible = true
+	
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property($BeadBoxScene, "position:y", -2000, 0.5)
@@ -56,7 +62,7 @@ func _on_bead_box_scene_to_main_camera(note):
 	
 	
 # to book scene
-func _on_middle_scene_to_book_camera(code):
+func _on_middle_scene_to_book_camera(_code):
 	$MiddleScene.process_mode = PROCESS_MODE_DISABLED
 	
 	$BookScene/Buttons.visible = false
@@ -132,7 +138,7 @@ func pauseForUi():
 			child.process_mode = PROCESS_MODE_DISABLED
 	
 	for child in bbChildren:
-		if child.name != "UI":
+		if child.name != "UI" and child.name != "Tutor_Page":
 			child.process_mode = PROCESS_MODE_DISABLED
 	
 	for child in bookChildren:
@@ -150,11 +156,27 @@ func unPauseForUi():
 			child.process_mode = PROCESS_MODE_INHERIT
 	
 	for child in bbChildren:
-		if child.name != "UI":
+		if child.name != "UI" and child.name != "Tutor_Page":
 			child.process_mode = PROCESS_MODE_INHERIT
 			
 	for child in bookChildren:
 		if child.name != "UI":
 			child.process_mode = PROCESS_MODE_INHERIT
-	
 
+func addToAllLog(text, num):
+	$BookScene/UI/HistoryLog.addToLog(text, num)
+	%MiddleScene/UI/HistoryLog.addToLog(text, num)
+	%BeadBoxScene/UI/HistoryLog.addToLog(text, num)
+
+func clearAllLog():
+	$BookScene/UI/HistoryLog.clear()
+	%MiddleScene/UI/HistoryLog.clear()
+	%BeadBoxScene/UI/HistoryLog.clear()
+
+func nextClient(client):
+	$BookScene/UI/HistoryLog.addToLog("-- + --", 3)
+	%MiddleScene/UI/HistoryLog.addToLog("-- + --", 3)
+	%BeadBoxScene/UI/HistoryLog.addToLog("-- + --", 3)
+	$BookScene/UI/HistoryLog.client = client
+	%MiddleScene/UI/HistoryLog.client = client
+	%BeadBoxScene/UI/HistoryLog.client = client

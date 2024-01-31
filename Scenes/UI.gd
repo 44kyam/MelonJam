@@ -4,6 +4,7 @@ var pages
 var pageIdx = 0
 var UIs
 var helpOpen = false
+var historyOpen = false
 
 var tutorialPage = false
 
@@ -19,6 +20,7 @@ func _input(ev):
 		tutorialPage = false
 		$Audio/Page.play()
 		$tutorialPage.queue_free()
+		$"../Tutor_Page".visible = true
 	
 	# next help pages
 	if helpOpen and ev.is_action_pressed("leftMouseClick"):
@@ -47,26 +49,44 @@ func _on_help_button_input_event(_viewport, event, _shape_idx):
 		$Audio/click.play()
 		helpButtonOpen(false)
 
-func helpButtonOpen(tutorial):
+func helpButtonOpen(_tutorial):
 	uiButtonOpen()
 	helpOpen = true
 	$HelpPages.visible = true
 
+# history utton click
+func _on_history_button_input_event(_viewport, event, _shape_idx):
+	if %HistoryButton.hover and event.is_action_pressed("leftMouseClick"):
+		$Audio/click.play()
+		historyButtonOpen()
+
+func historyButtonOpen():
+	uiButtonOpen()
+	historyOpen = true
+	%HistoryLog.visible = true
+
+
+# ui button functions
 func uiButtonOpen():
 	position = $"../Camera2D".position
 	%HelpButton.visible = false
+	%HistoryButton.visible = false
 	UIs = get_children()
 	for ui in UIs:
-		ui.visible = false
+		if ui.name != "tutorialPage": 
+			ui.visible = false
 		
 	$"../..".pauseForUi()
 	
 
 func uiButtonClose():
 	%HelpButton.visible = true
+	%HistoryButton.visible = true
 	for ui in UIs:
-		ui.visible = true
+		if ui.name != "tutorialPage": 
+			ui.visible = true
 		
 	$HelpPages.visible = false
+	%HistoryLog.visible = false
 	$"../..".unPauseForUi()
 	
